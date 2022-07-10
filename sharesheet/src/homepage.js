@@ -1,6 +1,7 @@
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
+import AllSheet from './AllSheet'
 
 function homepage() {
     return (
@@ -21,6 +22,7 @@ function homepage() {
         </header>
         </div> */
         <>
+        <AllSheet/>
             <div className="background">
                 <div className="row justify-content-center">
                     <div className="col-sm-2 mx-auto">
