@@ -1,7 +1,7 @@
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
-import AllSheet from './AllSheet'
+import AllSheet from './AllSheet.js'
 
 function homepage() {
     return (
@@ -22,38 +22,16 @@ function homepage() {
         </header>
         </div> */
         <>
-        <AllSheet/>
+        
             <div className="background">
-                <div className="row justify-content-center">
-                    <div className="col-sm-2 mx-auto">
-                        <h2>Welcome to ShareSheet</h2>
+                <div className="row">
+                    <div className="col-lg-4 offset-sm-1 ">
+                        <h4 className='bgText'>Welcome to ShareSheet</h4>
                     </div>
                 </div>
             </div>
 
-            <div className="row mt-2">
-
-
-                <div className="col-6 col-lg-4">
-
-                    <div className=' sheetBox mx-auto'>
-                        <div className='sheetPictureBox'></div>
-                        <p>Piano Sheet Name1</p>
-                        <p>Author Name 1</p>
-                    </div>
-
-                </div>
-
-                <div className="col-6 col-lg-4">
-                    <p>Piano Sheet Name2</p>
-                </div>
-                <div className="col-6 col-lg-4">
-                    <p>Piano Sheet Name3</p>
-                </div>
-                <div className="col-6 col-lg-4">
-                    <p>Piano Sheet Name4</p>
-                </div>
-            </div>
+            <AllSheet/>
         </>
 
 

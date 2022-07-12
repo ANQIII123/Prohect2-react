@@ -48,25 +48,48 @@ html,body
   
 
 .sheetPictureBox{
-    height:300px;
-    width: 200px;
+    display: flex;
+    height:15rem;
+    width:200px;
+    max-width: 100%;
     background-color: aliceblue;
-    margin:20px;
     border-radius: 10%;
     border-color: antiquewhite;
     border-width: 4px;
     border-style: solid;
+    align-items: center;
+    justify-content: center;
 }
 
 .sheetBox{
-    width: 200px;
+
+    max-width: 80%;
+    box-shadow: 2rem;
+    border-color: rgba(220, 220, 220, 0.832);
+    border-width: 2px;
+    border-style: solid;
+    padding-right:0.5rem;
+    padding-top:3rem;
+    padding-bottom:3rem;
+  
 }
 
 .background{
     background-image: url("https://wallpaperaccess.com/full/3337039.jpg");
-    background-size: contain;
+    background-size: cover;
     height: 100vh;
     font-size:50px;
     background-position: center;
     background-repeat:no-repeat; 
+}
+
+.bgText{
+  color: white;
+  font-size: larger;
+  position:relative;
+  top:150%
+}
+
+.desc_container{
+  margin-left: 1rem;
 }
