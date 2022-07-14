@@ -49,7 +49,7 @@ html,body
 
 .sheetPictureBox{
     display: flex;
-    height:15rem;
+    height:12rem;
     width:200px;
     max-width: 100%;
     background-color: aliceblue;
@@ -75,7 +75,7 @@ html,body
 }
 
 .background{
-    background-image: url("https://wallpaperaccess.com/full/3337039.jpg");
+    background-image: url("https://i.pinimg.com/originals/49/7d/35/497d351281d1a42c7f32adb6da4f45b4.jpg");
     background-size: cover;
     height: 100vh;
     font-size:50px;
