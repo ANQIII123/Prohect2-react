@@ -93,3 +93,9 @@ html,body
 .desc_container{
   margin-left: 1rem;
 }
+
+.pagination{
+  margin-top:2rem;
+  display:flex;
+  justify-content: center;
+}

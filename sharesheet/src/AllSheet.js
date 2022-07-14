@@ -41,7 +41,7 @@ class AllSheet extends React.Component {
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
                                             <button type="button" class="btn btn-outline-warning">Details</button>
-                                        </div>
+                                        </div>                                     
 
                                     </div>
 
@@ -49,7 +49,17 @@ class AllSheet extends React.Component {
 
                             )
                     }
-
+                                        <div className='pagination'>
+                                                 <nav aria-label="Page navigation example">
+                                                     <ul class="pagination">
+                                                    <li class="page-item"><a class="page-link" href="#">《</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">》</a></li>
+                                                       </ul>
+                                                </nav>
+                                        </div>
                 </div>
 
             </React.Fragment>
@@ -57,5 +67,4 @@ class AllSheet extends React.Component {
     }
 
 }
-
 export default AllSheet
