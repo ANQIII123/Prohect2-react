@@ -59,6 +59,3 @@ class AllSheet extends React.Component {
 }
 
 export default AllSheet
-
-
-// onClick={props.onAddNew
