@@ -39,7 +39,8 @@ class AllSheet extends React.Component {
                                             <h5>Song Name: {sheet.original.songName}</h5>
                                             <p>Composer: {sheet.original.composer}</p>
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
-                                            <p>Price: {sheet.cover.cost}</p>
+                                            <p>Difficulty: {sheet.cover.difficulty}</p>
+                                            <button type="button" class="btn btn-outline-warning">Details</button>
                                         </div>
 
                                     </div>
@@ -58,3 +59,6 @@ class AllSheet extends React.Component {
 }
 
 export default AllSheet
+
+
+// onClick={props.onAddNew
