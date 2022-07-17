@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import axios from "axios";
+import {
+    Link
+  } from "react-router-dom";
 
 
 class AllSheet extends React.Component {
@@ -9,6 +12,7 @@ class AllSheet extends React.Component {
     }
 
     componentDidMount() {
+        
         axios.get(`https://3000-anqiii123-project2expre-3xgq0qnngcp.ws-us54.gitpod.io/get_all_sheet`)
             .then(res => {
                 const sheets = res.data;
@@ -24,11 +28,11 @@ class AllSheet extends React.Component {
 
 
 
-                <div className="row mt-2">
+                <div className="row">
                     {
                         this.state.sheets
                             .map(sheet =>
-                                <div className="col-6 col-lg-4" key={sheet._id}>
+                                <div className="col-6 col-lg-4 mt-2 mp-2" key={sheet._id}>
 
                                     <div className=' sheetBox mx-auto'>
                                         <div className='sheetPictureBox mx-auto '>
@@ -40,7 +44,11 @@ class AllSheet extends React.Component {
                                             <p>Composer: {sheet.original.composer}</p>
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
-                                            <button type="button" class="btn btn-outline-warning">Details</button>
+
+                                            <Link to={{pathname: `/sheetdetails/${sheet._id}`}}>
+                                            <button type="button" className="btn btn-outline-warning" >Details</button>
+                                            </Link>
+                        
                                         </div>                                     
 
                                     </div>
@@ -51,12 +59,12 @@ class AllSheet extends React.Component {
                     }
                                         <div className='pagination'>
                                                  <nav aria-label="Page navigation example">
-                                                     <ul class="pagination">
-                                                    <li class="page-item"><a class="page-link" href="#">《</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">》</a></li>
+                                                     <ul className="pagination">
+                                                    <li className="page-item"><a className="page-link" href="#">《</a></li>
+                                                    <li className="page-item"><a className="page-link" href="#">1</a></li>
+                                                    <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                                    <li className="page-item"><a className="page-link" href="#">》</a></li>
                                                        </ul>
                                                 </nav>
                                         </div>

@@ -1,3 +1,34 @@
+import React from "react";
+
+export default function sheetDetails(props) {
+ return (
+   <React.Fragment>
+
+    <div>
+    <h3>Song Name: {sheet.original.songName}</h3>
+    <p>Composer: {sheet.original.composer}</p>
+       <div>
+          <img src={sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
+       </div>
+    <p>Song Description: {sheet.original.songDescription}</p>
+    <p>Price: {sheet.cover.cost}</p>
+    <p>Videolink: {sheet.cover.videoLink}</p>
+    <p>Rating and comments:{sheet.cover.ratingsComments}</p>
+    <p>Animae Name:{sheet.animaeDesc.animaeName}</p>
+    <p>Animae Description:{sheet.animaeDesc.animaeDescription}</p>
+                                              
+    </div>
+   </React.Fragment>
+ );
+}
+
+
+
+
+
+
+
+
 // import React, { Fragment } from "react";
 // import axios from "axios";
 
