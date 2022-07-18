@@ -13,7 +13,7 @@ class AllSheet extends React.Component {
 
     componentDidMount() {
         
-        axios.get(`https://3000-anqiii123-project2expre-3xgq0qnngcp.ws-us54.gitpod.io/get_all_sheet`)
+        axios.get(`https://3000-anqiii123-project2expre-j3zttqrvpmp.ws-us54.gitpod.io/get_all_sheet`)
             .then(res => {
                 const sheets = res.data;
                 this.setState({ sheets });

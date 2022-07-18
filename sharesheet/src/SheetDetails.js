@@ -29,9 +29,9 @@ export default class AddSheet extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-3xgq0qnngcp.ws-us54.gitpod.io/sheet`,
+        axios.post(`https://3000-anqiii123-project2expre-j3zttqrvpmp.ws-us54.gitpod.io/sheet`,
             {
-                "id": '62d41722956a48cb7bef302b'
+                "id": '62cfbfcb972f9ad0077caf6a'
             })
 
             .then(response => {
@@ -56,13 +56,49 @@ export default class AddSheet extends React.Component {
                 hello
 
                 {/* {JSON.stringify(this.state.sheet)} */}
+<div>
+   <div className="sheetDetails">
+         <div className='detailsContainer'>  
+                <h5>Song Name:</h5>
+                <h1>{this.state.sheet.original.songName}</h1>
+                <h5>Composer:</h5>
+                <h2>{this.state.sheet.original.composer}</h2>
+                <h5>Pages:</h5>
+                <h2>{this.state.sheet.cover.numberOfPages}</h2>
+                <h5>Difficulty:</h5>
+                <h2>{this.state.sheet.cover.difficulty}</h2>
+                <h5>Price:</h5>
+                <h2>{this.state.sheet.cover.cost}</h2>
+                <h5>Videolink:</h5>
+                <h3>{this.state.sheet.cover.videoLink}</h3>
+                {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
+                {/* col-3 col-s-3  */}
+                                              
+         </div>
 
-                <h5>Song Name: {this.state.sheet.original.songName}</h5>
-                <p>Composer: {this.state.sheet.original.composer}</p>
-                <p>Pages: {this.state.sheet.cover.numberOfPages}</p>
-                <p>Difficulty: {this.state.sheet.cover.difficulty}</p>
+         <div className='pianoSheetContainer'> 
+               <h3>Piano sheet Preview:</h3>
+               <img src={this.state.sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
+               {/* col-4.5 col-s-12 */}
+              
+         </div>
+         
+ 
+         <div className='animaeRelatedContainer'> 
+                <div className="animaeNamePicContainer">
+                <h4>Animae Name:</h4>
+                <h1>{this.state.sheet.animaeRelated.animaeName}</h1>
+                <img src={this.state.sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
+                </div>
 
-
+                <div className='animaeDescContainer'>
+                    <h4>Animae Description:</h4>
+                    <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
+                </div>
+             {/* col-4 col-s-9  */}
+         </div>
+   </div>
+</div>
 
             </React.Fragment>
 
