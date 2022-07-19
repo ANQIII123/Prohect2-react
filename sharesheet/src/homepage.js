@@ -1,7 +1,8 @@
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
-import AllSheet from './AllSheet.js'
+import AllSheet from './AllSheet.js';
+import SheetDetails from './SheetDetails.js'
 import React from 'react';
 import {Link} from "react-router-dom";
 

@@ -29,9 +29,9 @@ export default class AddSheet extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-j3zttqrvpmp.ws-us54.gitpod.io/sheet`,
+        axios.post(`https://3000-anqiii123-project2expre-6ly8p2l74dn.ws-us54.gitpod.io/sheet`,
             {
-                "id": '62cfbfcb972f9ad0077caf6a'
+                "id": '62cf63dd412536655375749f'
             })
 
             .then(response => {
@@ -69,8 +69,8 @@ export default class AddSheet extends React.Component {
                 <h2>{this.state.sheet.cover.difficulty}</h2>
                 <h5>Price:</h5>
                 <h2>{this.state.sheet.cover.cost}</h2>
-                <h5>Videolink:</h5>
-                <h3>{this.state.sheet.cover.videoLink}</h3>
+                <h5>Cover video:</h5>
+                <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a>
                 {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
                 {/* col-3 col-s-3  */}
                                               

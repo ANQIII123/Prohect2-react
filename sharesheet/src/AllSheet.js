@@ -13,7 +13,7 @@ class AllSheet extends React.Component {
 
     componentDidMount() {
         
-        axios.get(`https://3000-anqiii123-project2expre-j3zttqrvpmp.ws-us54.gitpod.io/get_all_sheet`)
+        axios.get(`https://3000-anqiii123-project2expre-6ly8p2l74dn.ws-us54.gitpod.io/get_all_sheet`)
             .then(res => {
                 const sheets = res.data;
                 this.setState({ sheets });
@@ -40,8 +40,8 @@ class AllSheet extends React.Component {
                                         </div>
 
                                         <div className='desc_container'>
-                                            <h5>Song Name: {sheet.original.songName}</h5>
-                                            <p>Composer: {sheet.original.composer}</p>
+                                            <h5>Name: {sheet.original.songName}</h5>
+                                            <p>By: {sheet.original.composer}</p>
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
 

@@ -89,8 +89,9 @@ html,body
 
 .bgText{
   color: white;
-  font-size: larger;
+  font-size:larger;
   position:relative;
+  font-family:'Brush Script MT', cursive;
   top:150%
 }
 
