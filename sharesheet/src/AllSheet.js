@@ -1,33 +1,82 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import {
-    Link
-  } from "react-router-dom";
+import SheetDetails from "./SheetDetails";
+import Sheet from "./models/Sheet";
+import AddSheet from "./AddSheet";
 
 
-class AllSheet extends React.Component {
+
+export default class AllSheet extends React.Component {
 
     state = {
-        sheets: []
+        active:'get_all_sheet',
+        sheet:[]
+    }
+  BASE_API_URL="https://3000-anqiii123-project2expre-6ly8p2l74dn.ws-us54.gitpod.io/"
+   
+  async componentDidMount(){
+         let response = await axios.get(this.BASE_API_URL + "all_sheet");
+       this.setState({
+        'sheet':response.sheet
+    })
+    renderPage(); {
+        if(this.state.active === 'get_all_sheet'){
+            return <Sheet data={this.state.sheet} />
+        }else if(this.state.active === 'addSheet')
+        return<AddSheet />
     }
 
-    componentDidMount() {
-        
-        axios.get(`https://3000-anqiii123-project2expre-6ly8p2l74dn.ws-us54.gitpod.io/get_all_sheet`)
-            .then(res => {
-                const sheets = res.data;
-                this.setState({ sheets });
-            })
-    }
+setActive(page);{
+    this.setState({
+        'active':page
+  })
+}
 
 
-    render() {
+        // axios.get(`https://3000-anqiii123-project2expre-6ly8p2l74dn.ws-us54.gitpod.io/get_all_sheet`)
+        //     .then(res => {
+        //         const sheets = res.data;
+        //         this.setState({ sheets });
+        //     })
+        // }
 
-        return (
-            <React.Fragment>
 
+    render();{
+        return (<div className="allSheetContainer">
+        <ul className="nav nav-tabs">
+             <li className="nav-item">
+                 <button className="nav-link"
+                         onClick={()=>{this.setActive('sheetListing')}}>
+                  Sheets
+                 </button>
+             </li>
+             <li>
+                 <button className="nav-link"
+                 onClick={()=>{this.setActive('addSheet')}}>
+                  Add Sheet
+                 </button>
+             </li>
+          </ul>
+         {this.renderPage()}
+      </div>
+    )}
+}
+              /* <React.Fragment>
+             <div className="allSheetContainer">
+                  <ul className="nav nav-tabs">
+                       <li className="nav-item">
+                           <button className="nav-link">
+                            Sheets
+                           </button>
+                       </li>
+                       <li>
+                           <button className="nav-link">
+                            Add Sheet
+                           </button>
+                       </li>
+                  </ul>
 
-
+                </div> 
                 <div className="row">
                     {
                         this.state.sheets
@@ -45,9 +94,13 @@ class AllSheet extends React.Component {
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
 
-                                            <Link to={{pathname: `/sheetdetails/${sheet._id}`}}>
+                                            <button className="nav-link">
+                                                Details
+                                            </button>
+
+                                             <Link to={{pathname: `/sheetdetails/${sheet._id}`}}>
                                             <button type="button" className="btn btn-outline-warning" >Details</button>
-                                            </Link>
+                                            </Link> 
                         
                                         </div>                                     
 
@@ -70,9 +123,7 @@ class AllSheet extends React.Component {
                                         </div>
                 </div>
 
-            </React.Fragment>
-        )
-    }
+                </React.Fragment>
+    
 
-}
-export default AllSheet
+// export default AllSheet*/}
