@@ -2,14 +2,39 @@ import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import AllSheet from './AllSheet.js';
+import { Button } from "bootstrap";
 import AddSheet from './AddSheet';
 import SheetDetails from './SheetDetails.js'
 import React from 'react';
 import {Link} from "react-router-dom";
+import axios from 'axios';
+import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 
 
+export default class Homepage extends React.Component {
+url = "https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io"
 
-class Homepage extends React.Component {
+state = {
+  'active': '/addSheet'
+}
+
+setActive= (active) => {
+  this.setState({
+      'active': active
+  })
+}
+
+doneAddingSheet = () => {
+  this.setActive('/addSheet')
+}
+
+renderPage() {
+ if (this.state.active === '/addSheet') {
+      return <AddSheet doneAddingSheet={this.doneAddingSheet} />
+  }
+}
+
+
   render() {
     return (
       <React.Fragment>
@@ -23,12 +48,24 @@ class Homepage extends React.Component {
           </div>
          </div>
         </div>
+         <div>
+         <div className="searchPlace">
+                                                    <MDBInputGroup>
+                                                    <MDBInput label='Search' />
+                                                    <MDBBtn rippleColor='dark'>
+                                                    <MDBIcon icon='search' />
+                                                    </MDBBtn>
+                                            </MDBInputGroup>
+                                    </div> 
+           <AllSheet />
+                <button className="nav-link" onClick={()=>{
+                        this.setActive('/AddSheet')
+                      }}>
+                  Upload Sheet
+                 </button>
 
-        <AllSheet />
         {/* <Link to="/addSheet"> addSheet </Link> */}
-      </React.Fragment>
-    )
-  }
-}
-
-export default Homepage;
+        </div>
+        {/* {this.renderPage()} */}
+      </React.Fragment>)
+}}

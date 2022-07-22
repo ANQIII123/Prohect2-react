@@ -46,6 +46,11 @@ html,body
     }
   } */
   
+
+.searchPlace{
+  display:flex;
+  align-items:center
+}
 .row{
   padding:0%;
 }
