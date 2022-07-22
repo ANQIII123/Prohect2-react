@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import SheetDetails from './SheetDetails';
-import AddSheet from './AddSheet';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

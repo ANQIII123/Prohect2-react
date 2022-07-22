@@ -4,12 +4,10 @@ export default class Sheet {
         
         this.original = {
             songName: '',
-            composer: [],
         };
 
         this.cover = {
             coverComposer: [],
-            version: [],
             difficulty: "",
             coverPublishYear: "",
             numberOfPages: "",

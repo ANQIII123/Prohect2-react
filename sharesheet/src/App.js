@@ -1,38 +1,59 @@
 // import'./App.css';
 import logo from './logo.svg';
-import Homepage from './homepage'
-import AllSheet from './AllSheet';
-import AddSheet from "./AddSheet";
-import SheetDetails from './SheetDetails';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Homepage from './pages/homepage'
+import AllSheet from './component/AllSheet';
+import AddSheet from "./pages/AddSheet.js";
+import SheetDetails from './pages/SheetDetails';
+import {Container, Navbar, Button} from 'react-bootstrap'
 import React from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      active: 'HomePage',
+      myprop:[]
+    }
+  }
+
+  choosePageToRender(pageName) {
+    console.log('clicked')
+    let pageList = { 'HomePage': <Homepage/>,'DetailPage':<SheetDetails/>, 'AddSheet' :<AddSheet/>}
+    return (pageList[pageName])
+  }
+
+
+  handleNavClick(pageName){
+    this.setState({active:pageName})
+  }
+
+
   render() {
+    console.log('rendered')
     return (
- 
-  
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>,
-    
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />}/>
-          <Route path="/addSheet" element={<AddSheet />}/>
-          <Route path="/sheetDetails/:id" element={<SheetDetails />}/>
-        </Routes>
-      </BrowserRouter>
-    );
+
+      <React.Fragment>
+        <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand>PianoSheet</Navbar.Brand>
+          <div className="me-auto">
+             <Button onClick={()=>{this.handleNavClick('HomePage')}} >Home</Button>
+            <Button onClick={()=>{this.handleNavClick('DetailPage')}} >Detail Page</Button>
+            <Button onClick={()=>{this.handleNavClick('AddSheet')}} >Add Sheet</Button>
+          </div >
+        </Container>
+      </Navbar>
+        {this.choosePageToRender(this.state.active)}      
+      </React.Fragment >
+
+
+        );
   }
 }
-export default App;
+        export default App;
 
-{/* 
+        {/* 
        <React.Fragment>
        <Homepage /> 
         <AllSheet />

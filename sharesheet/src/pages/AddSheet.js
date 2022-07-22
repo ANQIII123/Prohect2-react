@@ -1,85 +1,185 @@
 import React from 'react';
-import { Button } from "bootstrap";
+import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import Sheet from '../models/Sheet';
 
-
+    
 export default class AddSheet extends React.Component {
 
-    url = "https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io/"
+    url = "https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
 
-    state = {
-        'newsongName': '',
-        'newcomposer': [],
-        'newpianoSheetUrl':'',
-        'newdifficulty':'',
+    
+
+    constructor(props){
+        super(props);
+        this.state = {
+            // songName: '',
+    
+            // coverComposer: [],
+            // difficulty: "",
+            // coverPublishYear: "",
+            // numberOfPages: "",
+            // pianoSheetUrl: "",
+            // cost: "",
+            // videoLink: "",
+            // reviews: [],
+            // imageUrl: "",
+            // keywords:[],
+    
+            // animaeName: '',
+            // animaeDescription: ''
+            mysheet : new Sheet,
+            generatedFields : []
+        }
+        this.generateFormField()
     }
 
-    updateFormField = (s) => {
-        this.setState({
-            [s.target.name]: s.target.value
+
+
+    updateFormField = (event) => {
+        // this.setState({
+        //     [event.target.name]: event.target.value
+        // })
+
+        this.setState(
+                prevState => { 
+                    let _mysheet = prevState
+
+                    for (const property in _mysheet) {
+                        if (_mysheet[property][event.target.name] !== undefined){
+                            _mysheet[property][event.target.name] = event.target.value;
+                            return ({mysheet: _mysheet})
+                        }
+                    }
         })
+
       } 
+
+    addSheet=async ()=>{
+        // let mysheet = new Sheet
+
+        // for (const property in mysheet) {
+        //     if (mysheet[property][field] !== undefined){
+        //         mysheet[property][field] = data
+        //     }
+        // }
+        
+        // mysheet.original.songName = this.state.songName;
+        // mysheet.original.numberOfPages = this.state.numberOfPages;
+        // mysheet.original.cost = this.state.cost;
+        // mysheet.cover.difficulty = this.state.difficulty;
+
+        // mysheet.cover.pianoSheetUrl = this.state.pianoSheetUrl
+        // mysheet.cover.coverPublishYear = this.state.coverPublishYear
+
+        let result = await axios.post(this.url + '/addSheet',
+            {
+                "sheet": this.state.mysheet,
+            })
+            console.log(result)
+        }
+
+        generateFormField=async ()=>{ 
+            let _generatedFields= []
+            
+            Object.keys(this.state.mysheet.cover).forEach(key=> {
+                        
+            let _field =this.state.mysheet.cover[key]
+            
+            if (isNaN(_field) || typeof _field === 'string' ){
+                _generatedFields.push(
+                    <Form.Group className="mb-3">
+                    <Form.Label>{_field}</Form.Label>
+                        <Form.Control as="text" name={_field} onChange={this.updateFormField}/>
+                    </Form.Group>
+                )
+            }
+            this.setState({generatedFields: _generatedFields})
+            console.log(_generatedFields)
+
+            
+        })
+    }
+
+        
+
+
+    
+
   render(){    
     return (
         <React.Fragment>
-            <h1>Add Sheet</h1>
-                 <div className='form-group'>
-                        <input 
-                        type="text" 
-                        className='form-control'
-                        value={this.state.original.newsongName} 
-                        placeholder="Please enter Song Name"
-                        onChange={this.updateFormField}/>
-                  </div>
-                  <div className='form-group mt-3'>
-                         <input
-                          type="composer" 
-                          className='form-control'
-                          value={this.state.original.newcomposer}
-                          placeholder="Please enter song composer"
-                          onChange={this.updateFormField}/>
-                  </div>
-                  <div className='form-group mt-3'>
-                         <input 
-                         type="text" 
-                         className='form-control' 
-                         value={this.state.cover.newpianoSheetUrl} 
-                         placeholder="Please select difficulty" 
-                         onChange={this.updateFormField}/>
-                  </div>
-                 <div className='form-group mt-3'>
-                         <label 
-                         htmlFor="difficulty" 
-                         value={this.state.cover.newdifficulty}
-                         onChange={this.updateFormField}
-                         className="grey-text">Pick  difficulty ▼</label>
-                             <select
-                                     name="difficulty"
-                                     className="form-control">
-                                 <option value="Easy">Easy</option>
-                                 <option value="Normal">Normal</option>
-                                 <option value="Hard">Hard</option>
-                                 <option value="Expert">Expert</option>
-                             </select>
+            <h1>Add Sheet Page</h1>
+            <Form>
+                <Row>
+                    <Col md={4} className="justify-content-center">
+                    <Form.Group className="mb-3">
+                        <Form.Label>Song Name</Form.Label>
+                            <Form.Control type="text" name="songName" placeholder="Original Song Name" onChange={this.updateFormField}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Animae Name</Form.Label>
+                            <Form.Control type="text" name="animaeName" placeholder="Animae Name" onChange={this.updateFormField}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Animae Description</Form.Label>
+                            <Form.Control as="textarea" rows={3} name="animaeDescription" onChange={this.updateFormField}/>
+                    </Form.Group>
+                    </Col>
+                    <Col md={4} className="justify-content-center">
 
-                             <button className="btn btn-primary mt-3" onClick={this.addSheet}>Add New Sheet</button>
+                    {this.state.generatedFields}
+
+                    </Col>
+                </Row>
+            </Form>
+
+
+
+
+
+                 <div className='form-group mt-3'>
+
+                         <label htmlFor="difficulty" 
+                         
+                        className="grey-text">Pick  difficulty ▼</label>                      
+                            <select
+                                name="difficulty"
+                                className="form-control"
+                                onChange={this.updateFormField}>
+                                <option value="Easy">Easy</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Hard">Hard</option>
+                                <option value="Expert">Expert</option>
+                            </select>
+
+                            <button className="btn btn-primary mt-3" onClick={this.addSheet}>Add New Sheet</button>
                 </div>
+
         </React.Fragment>
     )
   }
-  addSheet=async ()=>{
-    await axios.post(this.url + 'sheet',{
-        'songName': this.state.original.newsongName,
-        'composer': this.state.original.newcomposer,
-        'pianoSheetUrl':this.state.cover.newpianoSheetUrl,
-        'difficulty':this.state.cover.newdifficulty
-    })
-    
-    this.props.doneAddingSheet();
-   }
+
 }
 
+{/* <MDBInput 
+type="text" 
+name='songName'
+placeholder="Please enter Song Name"
+onChange={this.updateFormField}/>
 
+
+ <MDBInput
+  type="text" 
+  name='composer'
+  placeholder="Please enter song composer"
+  onChange={this.updateFormField}/>
+
+ <MDBInput 
+ type="text" 
+ name='pianoSheetUrl'
+ label="Please enter pianoSheetUrl "
+ onChange={this.updateFormField}/> */}
 
 
 // import React from 'react';

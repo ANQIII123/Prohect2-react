@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import { Button } from "bootstrap";
-import SheetDetails from "./SheetDetails";
-import Sheet from "./models/Sheet";
+import SheetDetails from "../pages/SheetDetails";
+import Sheet from "../models/Sheet";
 // import AllSheet from "./AllSheet";
-import AddSheet from "./AddSheet";
+import AddSheet from "../pages/AddSheet";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
@@ -12,31 +12,29 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 
 
 
- export default class AllSheet extends React.Component {
-
-  url="https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io"
+ export default class AllSheet extends React.Component { 
+  
 
     state = {
-        'active':'/sheet',
         sheets: [],
-        data:[
-            
+        data:[            
         ],
     }
 
-        setActive  = (active) => {
-            this.setState({
-                'active': active
-            })
-        }
+    //     setActive  = (active) => {
+    //         this.setState({
+    //             'active': active
+    //         })
+    //     }
        
-        doneAddingSheet = () => {
-            this.setActive('/sheet')
-        }
+    //     doneAddingSheet = () => {
+    //         this.setActive('/sheet')
+    //     }
 
         componentDidMount() {
+            let url="https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
             
-            axios.get(`https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io/get_all_sheet`)
+            axios.get(url+`/get_all_sheet`)
                 .then(res => {
                     const sheets = res.data;
                     this.setState({ sheets });
@@ -44,13 +42,13 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
         }
     
     
-        renderPage() {
-            if (this.state.active === '/sheetDetails') {
-                return <SheetDetails/>
-            } else if (this.state.active === '/addSheet') {
-                return <AddSheet doneAddingSheet={this.doneAddingSheet} />
-            }
-        }
+        // renderPage() {
+        //     if (this.state.active === '/sheetDetails') {
+        //         return <SheetDetails/>
+        //     } else if (this.state.active === '/addSheet') {
+        //         return <AddSheet doneAddingSheet={this.doneAddingSheet} />
+        //     }
+        // }
 
         render(){
             return(
@@ -75,9 +73,8 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
 
-                                            <Link to={{pathname: `/sheetdetails/${sheet._id}`}}>
                                             <button type="button" className="btn btn-outline-warning" >Details</button>
-                                            </Link>
+
                         
                                         </div>                                     
 
