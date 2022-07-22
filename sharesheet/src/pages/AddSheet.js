@@ -80,25 +80,7 @@ export default class AddSheet extends React.Component {
         }
 
         generateFormField=async ()=>{ 
-            let _generatedFields= []
-            
-            Object.keys(this.state.mysheet.cover).forEach(key=> {
-                        
-            let _field =this.state.mysheet.cover[key]
-            
-            if (isNaN(_field) || typeof _field === 'string' ){
-                _generatedFields.push(
-                    <Form.Group className="mb-3">
-                    <Form.Label>{_field}</Form.Label>
-                        <Form.Control as="text" name={_field} onChange={this.updateFormField}/>
-                    </Form.Group>
-                )
-            }
-            this.setState({generatedFields: _generatedFields})
-            console.log(_generatedFields)
 
-            
-        })
     }
 
         
@@ -106,7 +88,24 @@ export default class AddSheet extends React.Component {
 
     
 
-  render(){    
+  render(){  
+    let _generatedFields= []
+            
+    Object.keys(this.state.mysheet.cover).forEach(key=> {
+                
+    let _field =this.state.mysheet.cover[key]
+    
+    if (isNaN(_field) || typeof _field === 'string' ){
+        _generatedFields.push(
+            <Form.Group className="mb-3">
+            <Form.Label>{key}</Form.Label>
+                <Form.Control as="text" name={key} onChange={this.updateFormField}/>
+            </Form.Group>
+        )
+    }
+    
+    })  
+    
     return (
         <React.Fragment>
             <h1>Add Sheet Page</h1>
@@ -127,8 +126,7 @@ export default class AddSheet extends React.Component {
                     </Form.Group>
                     </Col>
                     <Col md={4} className="justify-content-center">
-
-                    {this.state.generatedFields}
+                    {_generatedFields}
 
                     </Col>
                 </Row>
@@ -155,6 +153,7 @@ export default class AddSheet extends React.Component {
 
                             <button className="btn btn-primary mt-3" onClick={this.addSheet}>Add New Sheet</button>
                 </div>
+                
 
         </React.Fragment>
     )
