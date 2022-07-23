@@ -81,6 +81,7 @@ html,body
     padding-left:0.25rem;
     padding-top:2rem;
     padding-bottom:2rem;
+    min-height: 37rem;
 }
 
 .background{

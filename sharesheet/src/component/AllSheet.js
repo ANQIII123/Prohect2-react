@@ -1,13 +1,9 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { Button } from "bootstrap";
-import SheetDetails from "../pages/SheetDetails";
-import Sheet from "../models/Sheet";
+
 // import AllSheet from "./AllSheet";
-import AddSheet from "../pages/AddSheet";
-import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+import {Row, Col} from 'react-bootstrap'
 // import sheet from "/sheet"
 
 
@@ -32,12 +28,12 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
     //     }
 
         componentDidMount() {
-            let url="https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
+            let url="https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io";
             
             axios.get(url+`/get_all_sheet`)
                 .then(res => {
                     const sheets = res.data;
-                    this.setState({ sheets });
+                    this.setState({ sheets:sheets });
                 })
         }
     
@@ -54,26 +50,28 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
             return(
             <React.Fragment>
     
-                <div className="row">
+                <div className="row px-5">
                     {
                         this.state.sheets
                             .map(sheet =>
           
-                                <div className="col-6 col-lg-4 mt-2 mp-2" key={sheet._id}>
+                                <div className="col-6 col-lg-4 mt-2 mp-2" style={{padding:'0px'}} key={sheet._id}>
 
-                                    <div className=' sheetBox mx-auto'>
+                                    <div className='sheetBox mx-auto'>
                             
                                         <div className='sheetPictureBox mx-auto '>
                                         <img src={sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
                                         </div>
 
                                         <div className='desc_container'>
-                                            <h5>Name: {sheet.original.songName}</h5>
+                                            <Row><p style={{height:'4rem', marginBottom:'3px'}}>Name: {sheet.original.songName}</p></Row>
                                             <p>By: {sheet.original.composer}</p>
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
 
-                                            <button type="button" className="btn btn-outline-warning" >Details</button>
+                                            <button type="button" className="btn btn-outline-warning" 
+                                            onClick={()=>this.props.setActive('DetailPage',sheet._id)}
+                                            >Details</button>
 
                         
                                         </div>                                     

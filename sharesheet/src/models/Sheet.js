@@ -17,6 +17,7 @@ export default class Sheet {
             reviews: [],
             imageUrl: "",
             keywords:[],
+            coverName:''
         };
 
         this.animaeRelated = {

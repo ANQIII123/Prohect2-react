@@ -7,43 +7,31 @@ import Sheet from '../models/Sheet';
 export default class AddSheet extends React.Component {
 
     url = "https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
+    
 
     
 
     constructor(props){
         super(props);
         this.state = {
-            // songName: '',
-    
-            // coverComposer: [],
-            // difficulty: "",
-            // coverPublishYear: "",
-            // numberOfPages: "",
-            // pianoSheetUrl: "",
-            // cost: "",
-            // videoLink: "",
-            // reviews: [],
-            // imageUrl: "",
-            // keywords:[],
-    
-            // animaeName: '',
-            // animaeDescription: ''
             mysheet : new Sheet,
-            generatedFields : []
+            generatedFields : [],
+            composerFields:[],
+            composer:[],
+            selectedKeyword:[]
         }
-        this.generateFormField()
+        console.log(this.state.composerFields)
+        this.updateFormField = this.updateFormField.bind(this);
+
     }
 
 
 
     updateFormField = (event) => {
-        // this.setState({
-        //     [event.target.name]: event.target.value
-        // })
 
         this.setState(
                 prevState => { 
-                    let _mysheet = prevState
+                    let _mysheet = prevState.mysheet
 
                     for (const property in _mysheet) {
                         if (_mysheet[property][event.target.name] !== undefined){
@@ -53,53 +41,92 @@ export default class AddSheet extends React.Component {
                     }
         })
 
-      } 
+    } 
 
-    addSheet=async ()=>{
-        // let mysheet = new Sheet
+    addNewSheet= async ()=>{
 
-        // for (const property in mysheet) {
-        //     if (mysheet[property][field] !== undefined){
-        //         mysheet[property][field] = data
-        //     }
-        // }
-        
-        // mysheet.original.songName = this.state.songName;
-        // mysheet.original.numberOfPages = this.state.numberOfPages;
-        // mysheet.original.cost = this.state.cost;
-        // mysheet.cover.difficulty = this.state.difficulty;
-
-        // mysheet.cover.pianoSheetUrl = this.state.pianoSheetUrl
-        // mysheet.cover.coverPublishYear = this.state.coverPublishYear
+        let newsheet = this.state.mysheet;
+        newsheet.cover.coverComposer = this.state.composer;
+        this.state.selectedKeyword.forEach(selectedKeyword => {
+            newsheet.cover.keywords.push(this.state.selectedKeyword)
+        });
 
         let result = await axios.post(this.url + '/addSheet',
             {
-                "sheet": this.state.mysheet,
+                "sheet": newsheet,
             })
-            console.log(result)
-        }
-
-        generateFormField=async ()=>{ 
+        console.log(result);
 
     }
 
-        
 
+    addComposer(){ 
+        console.log('add composer')
+        this.setState(this.setState(prevState => ({
+            composerFields: [...prevState.composerFields,     <Form.Group className="mb-3" key={prevState.composerFields.length}>
+            <Form.Label>composer {prevState.composerFields.length+1}</Form.Label>
+                <Form.Control type="text" name={'composer'+ prevState.composerFields.length} onChange={(event)=>{
+                    let newcomposer = this.state.composer
+                    newcomposer[prevState.composerFields.length] = event.target.value
+                    this.setState({composer:newcomposer})
+                    console.log(this.state)
+                }}/>
+            </Form.Group>]
+          }))
+                   
+        )
+        console.log(this.state.composerFields)
+        
+    }
+
+    deleteComposer(){
+        this.setState(this.setState(prevState => ({
+            composerFields:prevState.composerFields.slice(0,-1),
+            composer:prevState.composer.slice(0,-1)
+        })))        
+    }
+
+    generateKeywords(){
+        let keywords = ['beginner friendly', 'newly componsed', 'award winning','keyword number 4'];
+        let keywordFields = []
+        for(let i = 0; i < keywords.length; i++){
+            
+            keywordFields.push(<div key={i} className="mb-3">
+              <Form.Check 
+                type='checkbox'
+                name={i}
+                label={keywords[i]}
+                onChange={(event)=>{
+                    let newSelectedKeyword = this.state.selectedKeyword;
+                    if (event.target.checked){
+                        newSelectedKeyword.push(keywords[i])
+                    }else{
+                        newSelectedKeyword = newSelectedKeyword.filter((ele)=>{return ele != keywords[i]});
+                    }
+                    this.setState({selectedKeyword:newSelectedKeyword})
+                }}
+              />
+            </div>)
+        }
+        
+        return keywordFields
+    }
 
     
 
-  render(){  
+  render(){ 
+
     let _generatedFields= []
             
     Object.keys(this.state.mysheet.cover).forEach(key=> {
                 
     let _field =this.state.mysheet.cover[key]
     
-    if (isNaN(_field) || typeof _field === 'string' ){
+    if (typeof _field === 'string' && key!=='difficulty' ){
         _generatedFields.push(
-            <Form.Group className="mb-3">
-            <Form.Label>{key}</Form.Label>
-                <Form.Control as="text" name={key} onChange={this.updateFormField}/>
+            <Form.Group className="mb-3" key={key}>
+            <Form.Label>{key.replace(/([A-Z])/g, " $1").toLowerCase()}</Form.Label>
+                <Form.Control type="text" name={key} onChange={this.updateFormField}/>
             </Form.Group>
         )
     }
@@ -112,35 +139,31 @@ export default class AddSheet extends React.Component {
             <Form>
                 <Row>
                     <Col md={4} className="justify-content-center">
-                    <Form.Group className="mb-3">
-                        <Form.Label>Song Name</Form.Label>
-                            <Form.Control type="text" name="songName" placeholder="Original Song Name" onChange={this.updateFormField}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Animae Name</Form.Label>
-                            <Form.Control type="text" name="animaeName" placeholder="Animae Name" onChange={this.updateFormField}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Animae Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} name="animaeDescription" onChange={this.updateFormField}/>
-                    </Form.Group>
+                        {/* 这里可以改^ */}
+                        <Form.Group className="mb-3">
+                            <Form.Label>Song Name</Form.Label>
+                                <Form.Control type="text" name="songName" placeholder="Original Song Name" onChange={this.updateFormField}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Animae Name</Form.Label>
+                                <Form.Control type="text" name="animaeName" placeholder="Animae Name" onChange={this.updateFormField}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Animae Description</Form.Label>
+                                <Form.Control as="textarea" rows={3} name="animaeDescription" onChange={this.updateFormField}/>
+                        </Form.Group>
+
+                        {this.generateKeywords()}                 
                     </Col>
+
                     <Col md={4} className="justify-content-center">
+                        {/* 这里可以改^ */}
+                        
                     {_generatedFields}
 
-                    </Col>
-                </Row>
-            </Form>
+                    <div className='form-group mt-3'>
 
-
-
-
-
-                 <div className='form-group mt-3'>
-
-                         <label htmlFor="difficulty" 
-                         
-                        className="grey-text">Pick  difficulty ▼</label>                      
+                         <label htmlFor="difficulty" >Pick  difficulty ▼</label>                      
                             <select
                                 name="difficulty"
                                 className="form-control"
@@ -151,8 +174,29 @@ export default class AddSheet extends React.Component {
                                 <option value="Expert">Expert</option>
                             </select>
 
-                            <button className="btn btn-primary mt-3" onClick={this.addSheet}>Add New Sheet</button>
+                            <Button className="btn btn-primary mt-3" onClick={()=>this.addNewSheet()}>Add New Sheet</Button>
                 </div>
+                    </Col>
+                    <Col md={4} className="justify-content-center"> 
+                    {/* 这里可以改^ */}
+                    {/* <Col md={4}> = <div class='col-md-4'> class=className button row col B, R, C */}
+                        <Form.Group>
+                            <Form.Label>Cover Composer</Form.Label>
+                            {this.state.composerFields}
+                            <Button className="btn-secondary mt-3" onClick={()=>this.addComposer()}>Add composer</Button>
+                            <Button className="btn-secondary mt-3" onClick={()=>this.deleteComposer()}>delete composer</Button>
+                        </Form.Group>
+                    </Col>
+
+
+                </Row>
+            </Form>
+
+
+
+
+
+                 
                 
 
         </React.Fragment>

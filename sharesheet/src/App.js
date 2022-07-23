@@ -13,20 +13,24 @@ class App extends React.Component {
     super(props)
     this.state = {
       active: 'HomePage',
-      myprop:[]
+      myprop:[],
+      sheetid:''
     }
   }
 
-  choosePageToRender(pageName) {
+  renderPage(pageName) {
     console.log('clicked')
-    let pageList = { 'HomePage': <Homepage/>,'DetailPage':<SheetDetails/>, 'AddSheet' :<AddSheet/>}
+    let pageList = { 'HomePage': <Homepage setActive={this.setActive}/>,'DetailPage':<SheetDetails sheetid={this.state.sheetid}/>, 'AddSheet' :<AddSheet/>}
     return (pageList[pageName])
   }
 
-
-  handleNavClick(pageName){
+  setActive=(pageName, _sheetid=null)=>{
     this.setState({active:pageName})
+    if(_sheetid){
+      this.setState({sheetid:_sheetid})
+    }
   }
+  
 
 
   render() {
@@ -38,13 +42,12 @@ class App extends React.Component {
         <Container>
           <Navbar.Brand>PianoSheet</Navbar.Brand>
           <div className="me-auto">
-             <Button onClick={()=>{this.handleNavClick('HomePage')}} >Home</Button>
-            <Button onClick={()=>{this.handleNavClick('DetailPage')}} >Detail Page</Button>
-            <Button onClick={()=>{this.handleNavClick('AddSheet')}} >Add Sheet</Button>
+             <Button onClick={()=>{this.setActive('HomePage')}} >Home</Button>
+            <Button onClick={()=>{this.setActive('AddSheet')}} >Add Sheet</Button>
           </div >
         </Container>
       </Navbar>
-        {this.choosePageToRender(this.state.active)}      
+        {this.renderPage(this.state.active)}      
       </React.Fragment >
 
 

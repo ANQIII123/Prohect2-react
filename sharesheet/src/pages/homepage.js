@@ -6,7 +6,7 @@ import SheetDetails from './SheetDetails.js'
 import React from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+import { Button } from 'react-bootstrap';
 
 
 export default class Homepage extends React.Component {
@@ -52,16 +52,12 @@ export default class Homepage extends React.Component {
 
         <div>
           <div className="searchPlace">
-            <MDBInputGroup>
-              <MDBInput label='Search' />
-              <MDBBtn rippleColor='dark'>
-                <MDBIcon icon='search' />
-              </MDBBtn>
-            </MDBInputGroup>
+                <Button onClick={()=>{this.props.setActive('AddSheet')}} />
+
           </div>
 
 
-          <AllSheet />
+          <AllSheet setActive={this.props.setActive}/>
 
 
 

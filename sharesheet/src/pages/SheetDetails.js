@@ -7,8 +7,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
 
-    
-
 
 export default class SheetDetails extends React.Component {
 
@@ -30,9 +28,9 @@ export default class SheetDetails extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io/sheet`,
+        axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/sheet`,
             {   
-                "id": '62cf63dd412536655375749f'
+                "id": this.props.sheetid
             })
 
             .then(response => {
@@ -54,7 +52,6 @@ export default class SheetDetails extends React.Component {
         return (
             <React.Fragment>
 
-                hello
 
                 {/* {JSON.stringify(this.state.sheet)} */}
 <div>
