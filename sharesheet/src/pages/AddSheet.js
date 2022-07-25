@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Sheet from '../models/Sheet';
+import './AddSheet.css';
 
     
 export default class AddSheet extends React.Component {
@@ -18,7 +19,7 @@ export default class AddSheet extends React.Component {
             generatedFields : [],
             composerFields:[],
             composer:[],
-            selectedKeyword:[]
+            selectedKeywords:[]
         }
         console.log(this.state.composerFields)
         this.updateFormField = this.updateFormField.bind(this);
@@ -47,8 +48,8 @@ export default class AddSheet extends React.Component {
 
         let newsheet = this.state.mysheet;
         newsheet.cover.coverComposer = this.state.composer;
-        this.state.selectedKeyword.forEach(selectedKeyword => {
-            newsheet.cover.keywords.push(this.state.selectedKeyword)
+        this.state.selectedKeywords.forEach(selectedKeyword => {
+            newsheet.cover.keywords.push(selectedKeyword)
         });
 
         let result = await axios.post(this.url + '/addSheet',
@@ -64,7 +65,7 @@ export default class AddSheet extends React.Component {
         console.log('add composer')
         this.setState(this.setState(prevState => ({
             composerFields: [...prevState.composerFields,     <Form.Group className="mb-3" key={prevState.composerFields.length}>
-            <Form.Label>composer {prevState.composerFields.length+1}</Form.Label>
+            <Form.Label>Composer: {prevState.composerFields.length+1}</Form.Label>
                 <Form.Control type="text" name={'composer'+ prevState.composerFields.length} onChange={(event)=>{
                     let newcomposer = this.state.composer
                     newcomposer[prevState.composerFields.length] = event.target.value
@@ -87,7 +88,7 @@ export default class AddSheet extends React.Component {
     }
 
     generateKeywords(){
-        let keywords = ['beginner friendly', 'newly componsed', 'award winning','keyword number 4'];
+        let keywords = ['Beginner friendly', 'Newly composed', 'Award winning','Challenging'];
         let keywordFields = []
         for(let i = 0; i < keywords.length; i++){
             
@@ -97,7 +98,7 @@ export default class AddSheet extends React.Component {
                 name={i}
                 label={keywords[i]}
                 onChange={(event)=>{
-                    let newSelectedKeyword = this.state.selectedKeyword;
+                    let newSelectedKeyword = this.state.selectedKeywords;
                     if (event.target.checked){
                         newSelectedKeyword.push(keywords[i])
                     }else{
@@ -135,22 +136,24 @@ export default class AddSheet extends React.Component {
     
     return (
         <React.Fragment>
-            <h1>Add Sheet Page</h1>
-            <Form>
+   <div className='sheetPage'>        
+            <h1>Add a New Sheet!</h1>
+              <div>
+            <Form className='form'>
                 <Row>
                     <Col md={4} className="justify-content-center">
                         {/* 这里可以改^ */}
                         <Form.Group className="mb-3">
-                            <Form.Label>Song Name</Form.Label>
-                                <Form.Control type="text" name="songName" placeholder="Original Song Name" onChange={this.updateFormField}/>
+                            <Form.Label>Song Name:</Form.Label>
+                                <Form.Control type="text" name="songName" placeholder="The original song name" onChange={this.updateFormField}/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>Animae Name</Form.Label>
-                                <Form.Control type="text" name="animaeName" placeholder="Animae Name" onChange={this.updateFormField}/>
+                            <Form.Label>Anime Name:</Form.Label>
+                                <Form.Control type="text" name="animaeName" placeholder="The anime that the song is from" onChange={this.updateFormField}/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>Animae Description</Form.Label>
-                                <Form.Control as="textarea" rows={3} name="animaeDescription" onChange={this.updateFormField}/>
+                            <Form.Label>Anime Description:</Form.Label>
+                                <Form.Control as="textarea" rows={3} name="animaeDescription" placeholder="Give a short description about this anime!" onChange={this.updateFormField}/>
                         </Form.Group>
 
                         {this.generateKeywords()}                 
@@ -163,7 +166,7 @@ export default class AddSheet extends React.Component {
 
                     <div className='form-group mt-3'>
 
-                         <label htmlFor="difficulty" >Pick  difficulty ▼</label>                      
+                         <label htmlFor="difficulty" >Pick Difficulty ▼</label>                      
                             <select
                                 name="difficulty"
                                 className="form-control"
@@ -174,31 +177,34 @@ export default class AddSheet extends React.Component {
                                 <option value="Expert">Expert</option>
                             </select>
 
-                            <Button className="btn btn-primary mt-3" onClick={()=>this.addNewSheet()}>Add New Sheet</Button>
+                            <Button className="btn btn-dark mt-3 btn-lg" onClick={()=>this.addNewSheet()}>Add this</Button>
                 </div>
                     </Col>
                     <Col md={4} className="justify-content-center"> 
                     {/* 这里可以改^ */}
                     {/* <Col md={4}> = <div class='col-md-4'> class=className button row col B, R, C */}
                         <Form.Group>
-                            <Form.Label>Cover Composer</Form.Label>
+                            <Form.Label>Cover Composer:</Form.Label>
                             {this.state.composerFields}
-                            <Button className="btn-secondary mt-3" onClick={()=>this.addComposer()}>Add composer</Button>
-                            <Button className="btn-secondary mt-3" onClick={()=>this.deleteComposer()}>delete composer</Button>
+                            <Button className="btn-dark mt-3" onClick={()=>this.addComposer()}>Add name</Button> 
+                            <Button className="btn-dark mt-3" onClick={()=>this.deleteComposer()}>Delete name</Button>
                         </Form.Group>
+                        {/* <img className='umaru' style="opacity:initial;" src="https://i.im.ge/2022/07/25/FLuBFC.png"></img> */}
+                    
                     </Col>
+                    {/* <div className='umaru'>
+                    <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                    </div> */}
 
 
                 </Row>
             </Form>
-
-
-
-
+         </div>
+     
 
                  
                 
-
+     </div>
         </React.Fragment>
     )
   }

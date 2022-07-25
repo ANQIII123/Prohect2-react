@@ -3,17 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AllSheet from '../component/AllSheet.js';
 import AddSheet from './AddSheet';
 import SheetDetails from './SheetDetails.js'
-import React from 'react';
+import React ,{createRef} from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
+import { FaAngleDown } from "react-icons/fa";
+
 
 
 export default class Homepage extends React.Component {
 
 
   url = "https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
-  
+
 
   // state = {
   //   active: 'Homepage'
@@ -35,26 +37,34 @@ export default class Homepage extends React.Component {
   //   }
   // }
 
+  constructor(props){
+    super(props)
+  }
+
 
   render() {
     return (
       <React.Fragment>
         <div className="background">
-          <div className="allSheetContainer">
-            <div className="row">
+           <div className="allSheetContainer">
+            <Row>
               <div className="col-lg-4 offset-sm-1 ">
-                <h4 className='bgText'>Welcome to ShareSheet</h4>
-
+                <h1 className='bgText'>Welcome to ShareSheet</h1>
               </div>
-            </div>
+            </Row>
+
+            <Row lg={12} style={{ position: 'relative', top: '60vh', justifyContent: 'center', alignItems: 'center', display: 'flex', zIndex: 99 }}>
+              <span style={{textAlign: "center", backgroundColor:'rgba(0, 0, 0, 0.45)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}>View all sheets</span>
+              <span style={{textAlign: "center", backgroundColor:'rgba(0, 0, 0, 0.45)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}><FaAngleDown/></span>
+            </Row>
+
+
           </div>
         </div>
 
-        <div>
-          <div className="searchPlace">
-                <Button onClick={()=>{this.props.setActive('AddSheet')}} />
+        <div id="allsheet">
 
-          </div>
+
 
 
           <AllSheet setActive={this.props.setActive}/>
@@ -65,6 +75,7 @@ export default class Homepage extends React.Component {
 
           {/* <Link to="/addSheet"> addSheet </Link> */}
         </div>
+
         {/* {this.renderPage()} */}
       </React.Fragment>)
   }

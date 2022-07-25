@@ -1,8 +1,8 @@
 
 import axios from "axios";
+import AllSheet from '../component/AllSheet.js';
 import Sheet from "../models/Sheet";
-
-
+import {Container, Navbar, Button} from 'react-bootstrap'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ export default class SheetDetails extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/sheet`,
+        axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getSheetById`,
             {   
                 "id": this.props.sheetid
             })
@@ -55,6 +55,9 @@ export default class SheetDetails extends React.Component {
 
                 {/* {JSON.stringify(this.state.sheet)} */}
 <div>
+   <div>
+   <Button onClick={()=>{this.setActive('allsheet')}}>Back</Button>
+   </div>
    <div className="sheetDetails">
          <div className='detailsContainer'>  
                 <h5>Song Name:</h5>
@@ -68,7 +71,11 @@ export default class SheetDetails extends React.Component {
                 <h5>Price:</h5>
                 <h2>{this.state.sheet.cover.cost}</h2>
                 <h5>Cover video:</h5>
-                <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a>
+                {/* <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a> */}
+                <a href={this.state.sheet.cover.videoLink}>
+                <img className="pianoPlay" alt="Piano" src="https://www.pngmart.com/files/16/Vector-Piano-PNG-Photos.png"></img>
+                </a>
+                <h6>Click on the piano to listen!</h6>
                 {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
                 {/* col-3 col-s-3  */}
                                               
@@ -88,7 +95,9 @@ export default class SheetDetails extends React.Component {
                 <h1>{this.state.sheet.animaeRelated.animaeName}</h1>
                 <img src={this.state.sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
                 </div>
-
+                 <div className="space">
+                       
+                 </div>
                 <div className='animaeDescContainer'>
                     <h4>Animae Description:</h4>
                     <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>

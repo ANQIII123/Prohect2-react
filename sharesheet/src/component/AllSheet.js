@@ -64,8 +64,9 @@ import {Row, Col} from 'react-bootstrap'
                                         </div>
 
                                         <div className='desc_container'>
-                                            <Row><p style={{height:'4rem', marginBottom:'3px'}}>Name: {sheet.original.songName}</p></Row>
-                                            <p>By: {sheet.original.composer}</p>
+                                            <Row><h4 style={{height:'4rem', marginBottom:'3px'}}>Name: {sheet.original.songName}</h4></Row>
+                                            <p>Covered by: {sheet.cover.coverComposer}</p>
+                                            <p>Original: {sheet.original.composer}</p>
                                             <p>Pages: {sheet.cover.numberOfPages}</p>
                                             <p>Difficulty: {sheet.cover.difficulty}</p>
 

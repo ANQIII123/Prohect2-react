@@ -6,6 +6,7 @@ import AddSheet from "./pages/AddSheet.js";
 import SheetDetails from './pages/SheetDetails';
 import {Container, Navbar, Button} from 'react-bootstrap'
 import React from 'react';
+import { DeleteSheetPage } from './pages/DeleteSheetPage';
 
 
 class App extends React.Component {
@@ -20,7 +21,12 @@ class App extends React.Component {
 
   renderPage(pageName) {
     console.log('clicked')
-    let pageList = { 'HomePage': <Homepage setActive={this.setActive}/>,'DetailPage':<SheetDetails sheetid={this.state.sheetid}/>, 'AddSheet' :<AddSheet/>}
+    let pageList = { 
+      'HomePage': <Homepage setActive={this.setActive}/>,
+      'DetailPage':<SheetDetails sheetid={this.state.sheetid}/>, 
+      'AddSheet' :<AddSheet/>,
+      'DeleteSheetPage':<DeleteSheetPage/>
+    }
     return (pageList[pageName])
   }
 
@@ -38,18 +44,19 @@ class App extends React.Component {
     return (
 
       <React.Fragment>
-        <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand>PianoSheet</Navbar.Brand>
+        <Navbar bg="white" variant="transparent">
+        <Container className="topNav">
+          <Navbar.Brand>Share Sheet</Navbar.Brand>
           <div className="me-auto">
-             <Button onClick={()=>{this.setActive('HomePage')}} >Home</Button>
-            <Button onClick={()=>{this.setActive('AddSheet')}} >Add Sheet</Button>
+             <Button variant="dark" onClick={()=>{this.setActive('HomePage')}} >Home</Button>
+             <Button variant="dark" onClick={()=>{this.setActive('AddSheet')}} >Add Piano Sheet</Button>
+             <Button variant="dark" onClick={()=>{this.setActive('DeleteSheetPage')}} >Delete Piano Sheet</Button>
           </div >
         </Container>
       </Navbar>
         {this.renderPage(this.state.active)}      
       </React.Fragment >
-
+      
 
         );
   }
