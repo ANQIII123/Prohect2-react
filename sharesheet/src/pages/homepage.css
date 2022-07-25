@@ -79,8 +79,8 @@ html,body
     background-repeat: repeat-x;
     border-radius: 5%;
     box-shadow: 2rem;
-    border-color: rgba(220, 220, 220, 0.832);
-    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.832);
+    border-width: 5px;
     border-style: solid;
     padding-right:0.1rem;
     padding-left:0.1rem;
@@ -144,7 +144,7 @@ html,body
   margin:0.5rem;
   flex:25%;
   padding: 1%;
-  border-radius: 8%;
+  border-radius:20px;
 }
 
 .pianoSheetContainer{
@@ -153,12 +153,17 @@ html,body
   border: 3px solid rgb(0, 0, 0);
   flex:45%;
   padding: 2%;
-  border-radius: 8%;
+  border-radius:20px;
 }
 
 .space{
   border: 1px solid white;
   height: 1em;
+}
+
+.pianoPlay{
+  height:200px;
+  width:auto;
 }
 
 
@@ -169,7 +174,7 @@ html,body
   padding: 2%;
   border: 3px solid rgb(0, 0, 0);
   background-color: rgb(252, 252, 252);
-  border-radius:8%;
+  border-radius:20px;
 }
 
 

@@ -55,9 +55,9 @@ export default class SheetDetails extends React.Component {
 
                 {/* {JSON.stringify(this.state.sheet)} */}
 <div>
-   <div>
-   <Button onClick={()=>{this.setActive('allsheet')}}>Back</Button>
-   </div>
+        <button type="button" className="btn btn-dark" 
+                           onClick={()=>this.props.setActive('allsheet')}
+                                            >Back</button>
    <div className="sheetDetails">
          <div className='detailsContainer'>  
                 <h5>Song Name:</h5>
@@ -71,7 +71,6 @@ export default class SheetDetails extends React.Component {
                 <h5>Price:</h5>
                 <h2>{this.state.sheet.cover.cost}</h2>
                 <h5>Cover video:</h5>
-                {/* <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a> */}
                 <a href={this.state.sheet.cover.videoLink}>
                 <img className="pianoPlay" alt="Piano" src="https://www.pngmart.com/files/16/Vector-Piano-PNG-Photos.png"></img>
                 </a>
@@ -99,7 +98,8 @@ export default class SheetDetails extends React.Component {
                        
                  </div>
                 <div className='animaeDescContainer'>
-                    <h4>Animae Description:</h4>
+                    <h2>Anime Description:</h2>
+
                     <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
                 </div>
              {/* col-4 col-s-9  */}
