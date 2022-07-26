@@ -7,6 +7,14 @@ html,body
     overflow-x: hidden; 
 }
 
+.contact-us{
+   background-color: black;
+   opacity: 1;
+   align-items: center;
+   text-align: center;
+   color:white;
+   font-family: 'Lucida Handwriting', cursive;
+}
 /* .App {
     text-align: center;
   }
@@ -96,6 +104,16 @@ html,body
     font-size:50px;
     background-position: center;
     background-repeat:no-repeat; 
+}
+
+.emailLink{
+  height:60px;
+  width:auto;
+}
+
+.phoneLink{
+  height:60px;
+  width:auto;
 }
 
 .bgText{
@@ -224,4 +242,12 @@ html,body
 .topNav{
   margin:0%;
 
+}
+
+.anya{
+  width: 20px;
+  height:auto;
+  position: absolute;
+  right: 30%;
+  bottom:0%;
 }

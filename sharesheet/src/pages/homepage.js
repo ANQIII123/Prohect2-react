@@ -1,6 +1,8 @@
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AllSheet from '../component/AllSheet.js';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import AddSheet from './AddSheet';
 import SheetDetails from './SheetDetails.js'
 import React ,{createRef} from 'react';
@@ -41,9 +43,12 @@ export default class Homepage extends React.Component {
     super(props)
   }
 
+  // let popup = document.getElementById("myPopup");
+  // popup.classList.toggle("show");
 
   render() {
     return (
+  
       <React.Fragment>
         <div className="background">
            <div className="allSheetContainer">
@@ -72,10 +77,33 @@ export default class Homepage extends React.Component {
 
 
 
-
           {/* <Link to="/addSheet"> addSheet </Link> */}
         </div>
+        
+        <div className='contact-us'>
+                <h1>Questions or feedback?</h1>
+                <h1>Contact us at:</h1>
+                <span>
+                < a href="mailto:sharesheet233@gmail.com">
+                  <img className="emailLink" src="https://1001freedownloads.s3.amazonaws.com/vector/thumb/64205/simplemail.png"></img>
+                </a>
+                
+              <a href="tel:82375829">
+              <img className="phoneLink" src="https://c.tenor.com/ju4PztDv8WcAAAAj/firstrequestrecords-first-request.gif"></img>
+              </a>
+              </span>
+              <h2>sharesheet233@gmail.com   /   +65 82375829</h2>
+              </div>
+        {/* <img className='anya' src='https://i.im.ge/2022/07/26/FUOHOW.png'></img> */}
+                <div className="anya" style={{ position:"absolute", "right":'150px', bottom: '50px'}}>
+                    <Popup trigger={<img style={{"height": "100px","width":"auto"}} src='https://i.im.ge/2022/07/26/FUOHOW.png'></img>} position="top center">
+                      <div>Need any help?</div>
+                      <button>Yes</button>
+                    </Popup>
+                  </div>
 
+
+   
         {/* {this.renderPage()} */}
       </React.Fragment>)
   }

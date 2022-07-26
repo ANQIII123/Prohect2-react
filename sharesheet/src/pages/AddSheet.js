@@ -183,14 +183,19 @@ export default class AddSheet extends React.Component {
                     <Col md={4} className="justify-content-center"> 
                     {/* 这里可以改^ */}
                     {/* <Col md={4}> = <div class='col-md-4'> class=className button row col B, R, C */}
+                    <div>
                         <Form.Group>
                             <Form.Label>Cover Composer:</Form.Label>
                             {this.state.composerFields}
                             <Button className="btn-dark mt-3" onClick={()=>this.addComposer()}>Add name</Button> 
                             <Button className="btn-dark mt-3" onClick={()=>this.deleteComposer()}>Delete name</Button>
+                            
                         </Form.Group>
-                        {/* <img className='umaru' style="opacity:initial;" src="https://i.im.ge/2022/07/25/FLuBFC.png"></img> */}
-                    
+                        <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                        </div>
+                     {/* <div className='umaru'>
+                          <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                     </div> */}
                     </Col>
                     {/* <div className='umaru'>
                     <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>

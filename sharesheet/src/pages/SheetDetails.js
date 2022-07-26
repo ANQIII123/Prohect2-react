@@ -62,8 +62,10 @@ export default class SheetDetails extends React.Component {
          <div className='detailsContainer'>  
                 <h5>Song Name:</h5>
                 <h1>{this.state.sheet.original.songName}</h1>
-                <h5>Composer:</h5>
-                <h2>{this.state.sheet.original.composer}</h2>
+                <h1 style={{height:'4rem', marginBottom:'3px'}}>Name: {this.state.sheet.original.songName}</h1>
+                <h2>Covered by: {this.state.sheet.cover.coverComposer && this.state.sheet.cover.coverComposer.join("，")}</h2>
+                <h5>Composed by:</h5>
+                <h2>{this.state.sheet.original.composer && this.state.sheet.original.composer.join("，")}</h2>
                 <h5>Pages:</h5>
                 <h2>{this.state.sheet.cover.numberOfPages}</h2>
                 <h5>Difficulty:</h5>

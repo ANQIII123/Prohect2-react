@@ -14,7 +14,7 @@ html,body
     margin: 10px;
     background-color: #ffffff;
     border: 1px solid black;
-    opacity: 0.8;
+    opacity: 0.9;
     background-repeat:no-repeat; 
 }
 
@@ -29,9 +29,9 @@ html,body
 } */
 
 .umaru{
-    width: 300px;
+    width:1rem;
     height: auto;
     position: absolute;
-    right: 0%;
+    right: 70%;
     bottom:0%
 }

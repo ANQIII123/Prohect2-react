@@ -55,7 +55,7 @@ import {Row, Col} from 'react-bootstrap'
                         this.state.sheets
                             .map(sheet =>
           
-                                <div className="col-6 col-lg-4 mt-2 mp-2" style={{padding:'0px'}} key={sheet._id}>
+                                <div className="col-6 col-lg-4 mt-2 mp-1" style={{padding:'0px'}} key={sheet._id}>
 
                                     <div className='sheetBox mx-auto'>
                             
@@ -64,23 +64,18 @@ import {Row, Col} from 'react-bootstrap'
                                         </div>
 
                                         <div className='desc_container'>
-                                            <Row><h4 style={{height:'4rem', marginBottom:'3px'}}>Name: {sheet.original.songName}</h4></Row>
-                                            <p>Covered by: {sheet.cover.coverComposer}</p>
-                                            <p>Original: {sheet.original.composer}</p>
-                                            <p>Pages: {sheet.cover.numberOfPages}</p>
-                                            <p>Difficulty: {sheet.cover.difficulty}</p>
+                                            <Row><h4 style={{ height:'3rem', marginBottom:'4px',fontSize:'2.25vw',fontWeight:'bold'}}>Name: {sheet.original.songName}</h4></Row>
+                                            <p style={{fontSize:'2vw'}}>Covered by: {sheet.cover.coverComposer.join("，")}</p>
+                                            <p style={{fontSize:'2vw'}}>Original: {sheet.original.composer}</p>
+                                            <p style={{fontSize:'2vw'}}>Pages: {sheet.cover.numberOfPages}</p>
+                                            <p style={{fontSize:'2vw'}}>Difficulty: {sheet.cover.difficulty}</p>
 
                                             <button type="button" className="btn btn-outline-warning" 
                                             onClick={()=>this.props.setActive('DetailPage',sheet._id)}
                                             >Details</button>
-
-                        
                                         </div>                                     
-
                                     </div>
-
                                 </div>
-                      
                             )
                     }
                                         <div className='pagination'>
