@@ -29,9 +29,13 @@ html,body
 } */
 
 .umaru{
-    width:1rem;
+    width:22vw;
     height: auto;
     position: absolute;
-    right: 70%;
+    right: 0%;
     bottom:0%
+}
+
+.margin-left{
+    margin-left: 10px !important;
 }

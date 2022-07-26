@@ -50,27 +50,28 @@ import {Row, Col} from 'react-bootstrap'
             return(
             <React.Fragment>
     
-                <div className="row px-5">
+                <div className="row px-3" >
                     {
                         this.state.sheets
                             .map(sheet =>
           
-                                <div className="col-6 col-lg-4 mt-2 mp-1" style={{padding:'0px'}} key={sheet._id}>
+                                <div className="col-6 col-lg-4 mt-2 mb-1" style={{padding:'0px'}} key={sheet._id}>
 
-                                    <div className='sheetBox mx-auto'>
+                                    <div className='sheetBox mx-auto' >
                             
                                         <div className='sheetPictureBox mx-auto '>
                                         <img src={sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
                                         </div>
 
                                         <div className='desc_container'>
-                                            <Row><h4 style={{ height:'3rem', marginBottom:'4px',fontSize:'2.25vw',fontWeight:'bold'}}>Name: {sheet.original.songName}</h4></Row>
-                                            <p style={{fontSize:'2vw'}}>Covered by: {sheet.cover.coverComposer.join("，")}</p>
-                                            <p style={{fontSize:'2vw'}}>Original: {sheet.original.composer}</p>
-                                            <p style={{fontSize:'2vw'}}>Pages: {sheet.cover.numberOfPages}</p>
-                                            <p style={{fontSize:'2vw'}}>Difficulty: {sheet.cover.difficulty}</p>
-
-                                            <button type="button" className="btn btn-outline-warning" 
+                                          <div  className="desc_text">
+                                            <Row><h4 style={{ height:'3rem', marginBottom:'4px',fontWeight:'bold'}}>Name: {sheet.original.songName}</h4></Row>
+                                            <p>Covered by: {sheet.cover.coverComposer.join("，")}</p>
+                                            <p>Original: {sheet.original.composer}</p>
+                                            <p>Pages: {sheet.cover.numberOfPages}</p>
+                                            <p>Difficulty: {sheet.cover.difficulty}</p>
+                                          </div>
+                                            <button type="button" className="btn btn-outline-dark" 
                                             onClick={()=>this.props.setActive('DetailPage',sheet._id)}
                                             >Details</button>
                                         </div>                                     

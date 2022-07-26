@@ -6,7 +6,6 @@ import 'reactjs-popup/dist/index.css';
 import AddSheet from './AddSheet';
 import SheetDetails from './SheetDetails.js'
 import React ,{createRef} from 'react';
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import { Button, Row } from 'react-bootstrap';
 import { FaAngleDown } from "react-icons/fa";
@@ -41,6 +40,9 @@ export default class Homepage extends React.Component {
 
   constructor(props){
     super(props)
+    // this.state={
+    //   _feedback:''
+    // }
   }
 
   // let popup = document.getElementById("myPopup");
@@ -54,7 +56,8 @@ export default class Homepage extends React.Component {
            <div className="allSheetContainer">
             <Row>
               <div className="col-lg-4 offset-sm-1 ">
-                <h1 className='bgText'>Welcome to ShareSheet</h1>
+                {/* <img src="https://i.im.ge/2022/07/26/FhdeoD.png"></img> */}
+                <h1 className='bgText'>Welcome to Share.Sheet</h1>
               </div>
             </Row>
 
@@ -79,8 +82,9 @@ export default class Homepage extends React.Component {
 
           {/* <Link to="/addSheet"> addSheet </Link> */}
         </div>
-        
+  
         <div className='contact-us'>
+           <br />
                 <h1>Questions or feedback?</h1>
                 <h1>Contact us at:</h1>
                 <span>
@@ -94,11 +98,15 @@ export default class Homepage extends React.Component {
               </span>
               <h2>sharesheet233@gmail.com   /   +65 82375829</h2>
               </div>
-        {/* <img className='anya' src='https://i.im.ge/2022/07/26/FUOHOW.png'></img> */}
-                <div className="anya" style={{ position:"absolute", "right":'150px', bottom: '50px'}}>
+                <div className="anya" style={{ position:"absolute", "right":'100px', bottom: '55px'}}>
                     <Popup trigger={<img style={{"height": "100px","width":"auto"}} src='https://i.im.ge/2022/07/26/FUOHOW.png'></img>} position="top center">
-                      <div>Need any help?</div>
-                      <button>Yes</button>
+                      <div>Let Anya know your feedbacks!</div>
+                      
+                            <textarea name="review" rows="5" cols="18"> </textarea>
+                            <Button className="btn-outline-dark" onClick={()=>{
+                              alert('feedback received')
+                            }}>Submit</Button>
+
                     </Popup>
                   </div>
 

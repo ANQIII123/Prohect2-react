@@ -10,7 +10,7 @@ export function SheetSearchBox(props) {
     const [searchType, setSearchType] = useState('');
     const [keyword, setKeyword] = useState('');
     const [difficulty, setDifficulty] = useState('')
-    const [limit, setLimit] = useState(5);
+    const [limit, setLimit] = useState(20);
     const [maxCost, setMaxCost] = useState()
 
 
@@ -19,10 +19,10 @@ export function SheetSearchBox(props) {
 
         let response = await axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getsheet`,
             {
-                keyword:keyword,
-                limit:parseInt(limit),
-                difficulty:difficulty,
-                maxCost:parseFloat(maxCost)
+                keyword: keyword,
+                limit: parseInt(limit),
+                difficulty: difficulty,
+                maxCost: parseFloat(maxCost)
             })
 
         let sheetList = response.data
@@ -40,10 +40,9 @@ export function SheetSearchBox(props) {
             <Row style={{ width: '100%' }}>
                 <Col md={2}>
                     <Form.Select onChange={e => setSearchType(e.target.value)}>
-                        <option value="">Search by</option>
+                        <option value="any">Song/Animae Name</option>
                         <option value="songName">Original Song Name</option>
                         <option value="animaeName">Animae Name</option>
-                        <option value="any">In either Name</option>
                     </Form.Select>
                 </Col>
 
@@ -52,7 +51,7 @@ export function SheetSearchBox(props) {
                 </Col>
 
                 <Col md={1}>
-                    <Button onClick={() => { searchOne() }}><FaSearch /></Button>
+                    <Button variant="dark" onClick={() => { searchOne() }}><FaSearch /></Button>
                 </Col>
 
                 <Col md={2}>
@@ -65,7 +64,7 @@ export function SheetSearchBox(props) {
                 </Col>
 
                 <Col md={1}>
-                    <MDBInput label='Return Number' onChange={e => setLimit(e.target.value)}></MDBInput>
+                    <MDBInput label='Return Number' value={limit} onChange={e => setLimit(e.target.value)}></MDBInput>
                 </Col>
 
                 <Col md={1}>

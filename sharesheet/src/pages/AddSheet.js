@@ -10,8 +10,6 @@ export default class AddSheet extends React.Component {
     url = "https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
     
 
-    
-
     constructor(props){
         super(props);
         this.state = {
@@ -57,6 +55,8 @@ export default class AddSheet extends React.Component {
                 "sheet": newsheet,
             })
         console.log(result);
+
+        alert('sheet added!')
 
     }
 
@@ -177,7 +177,7 @@ export default class AddSheet extends React.Component {
                                 <option value="Expert">Expert</option>
                             </select>
 
-                            <Button className="btn btn-dark mt-3 btn-lg" onClick={()=>this.addNewSheet()}>Add this</Button>
+                            {/* <Button className="btn btn-dark mt-3 btn-lg" onClick={()=>this.addNewSheet()}>Add this</Button> */}
                 </div>
                     </Col>
                     <Col md={4} className="justify-content-center"> 
@@ -187,20 +187,16 @@ export default class AddSheet extends React.Component {
                         <Form.Group>
                             <Form.Label>Cover Composer:</Form.Label>
                             {this.state.composerFields}
-                            <Button className="btn-dark mt-3" onClick={()=>this.addComposer()}>Add name</Button> 
-                            <Button className="btn-dark mt-3" onClick={()=>this.deleteComposer()}>Delete name</Button>
-                            
+                            <br />
+                            <Button className="btn-dark mt-3 margin-left" onClick={()=>this.addComposer()}>Add name</Button> 
+                            <Button className="btn-dark mt-3 margin-left" onClick={()=>this.deleteComposer()}>Delete name</Button>
+                            <br />
+                            <br />
+                            <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addNewSheet()}>Add this</Button>
                         </Form.Group>
-                        <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                        <img className='umaru' src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
                         </div>
-                     {/* <div className='umaru'>
-                          <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
-                     </div> */}
                     </Col>
-                    {/* <div className='umaru'>
-                    <img src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
-                    </div> */}
-
 
                 </Row>
             </Form>

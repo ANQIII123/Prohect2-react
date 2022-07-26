@@ -16,7 +16,7 @@ export default class SheetDetails extends React.Component {
 
         this.state = {
              sheet: new Sheet,
-        
+             
 
         }
     }
@@ -30,14 +30,15 @@ export default class SheetDetails extends React.Component {
 
         axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getSheetById`,
             {   
-                "id": this.props.sheetid
+                "id": this.props.sheetid,
             })
 
             .then(response => {
                 console.log(response);
-                const sheet = response.data;
+                const _sheet = response.data;
+                _sheet.cover.cost = _sheet.cover.cost.$numberDecimal
                 this.setState({
-                    sheet
+                    sheet:_sheet
                 });
 
             })
@@ -46,7 +47,28 @@ export default class SheetDetails extends React.Component {
             });
 
     }
+
+    fillCommentsToShow(){
+
+        let commentsToShow = []
+
+        this.state.sheet.cover.reviews.forEach(eachReview => {
+
+            commentsToShow.push(
+                <a>
+                    {eachReview.comment}
+                </a>        
+                )          
+        });
+
+
+        return(commentsToShow)
+    }
+
+
     render() {
+
+        
 
 
         return (
@@ -56,24 +78,29 @@ export default class SheetDetails extends React.Component {
                 {/* {JSON.stringify(this.state.sheet)} */}
 <div>
         <button type="button" className="btn btn-dark" 
-                           onClick={()=>this.props.setActive('allsheet')}
+                        onClick={()=>this.props.setActive('HomePage')}
                                             >Back</button>
    <div className="sheetDetails">
          <div className='detailsContainer'>  
                 <h5>Song Name:</h5>
                 <h1>{this.state.sheet.original.songName}</h1>
                 <h1 style={{height:'4rem', marginBottom:'3px'}}>Name: {this.state.sheet.original.songName}</h1>
-                <h2>Covered by: {this.state.sheet.cover.coverComposer && this.state.sheet.cover.coverComposer.join("，")}</h2>
-                <h5>Composed by:</h5>
+                <h5>Original:</h5>
                 <h2>{this.state.sheet.original.composer && this.state.sheet.original.composer.join("，")}</h2>
-                <h5>Pages:</h5>
+                <h5>Covered by:</h5>
+                <h3>{this.state.sheet.cover.coverComposer && this.state.sheet.cover.coverComposer.join("，")}</h3>
+                <h5>Number of Pages:</h5>
                 <h2>{this.state.sheet.cover.numberOfPages}</h2>
-                <h5>Difficulty:</h5>
+                <h5>Difficulty level:</h5>
                 <h2>{this.state.sheet.cover.difficulty}</h2>
                 <h5>Price:</h5>
                 <h2>{this.state.sheet.cover.cost}</h2>
+
+                <h5>Comments:</h5>
+                {this.fillCommentsToShow()}
+
                 <h5>Cover video:</h5>
-                <a href={this.state.sheet.cover.videoLink}>
+                <a href={this.state.sheet.cover.videoLink} target="_blank">
                 <img className="pianoPlay" alt="Piano" src="https://www.pngmart.com/files/16/Vector-Piano-PNG-Photos.png"></img>
                 </a>
                 <h6>Click on the piano to listen!</h6>
@@ -86,6 +113,11 @@ export default class SheetDetails extends React.Component {
                <h3>Piano sheet Preview:</h3>
                <img src={this.state.sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
                {/* col-4.5 col-s-12 */}
+               <div className="d-flex justify-content-center">
+
+               <button type="button" className="btn btn-lg btn-dark  btn-block" >
+                       <span className="dollar">&#36;</span> Buy This!</button>
+              </div>
               
          </div>
          

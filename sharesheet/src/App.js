@@ -4,9 +4,10 @@ import Homepage from './pages/homepage'
 import AllSheet from './component/AllSheet';
 import AddSheet from "./pages/AddSheet.js";
 import SheetDetails from './pages/SheetDetails';
-import {Container, Navbar, Button} from 'react-bootstrap'
+import {Container, Navbar, Button, ButtonGroup} from 'react-bootstrap'
 import React from 'react';
-import { DeleteSheetPage } from './pages/DeleteSheetPage';
+import { EditSheetPage } from './pages/EditSheetPage';
+import LoginPage from './pages/LoginPage';
 
 
 class App extends React.Component {
@@ -14,7 +15,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       active: 'HomePage',
-      myprop:[],
+      user:{},
       sheetid:''
     }
   }
@@ -23,9 +24,10 @@ class App extends React.Component {
     console.log('clicked')
     let pageList = { 
       'HomePage': <Homepage setActive={this.setActive}/>,
-      'DetailPage':<SheetDetails sheetid={this.state.sheetid}/>, 
-      'AddSheet' :<AddSheet/>,
-      'DeleteSheetPage':<DeleteSheetPage/>
+      'DetailPage':<SheetDetails sheetid={this.state.sheetid} setActive={this.setActive}/>, 
+      'AddSheet' :<AddSheet />,
+      'EditSheetPage':<EditSheetPage/>,
+      'LoginPage':<LoginPage setUser={this.setUser}/>
     }
     return (pageList[pageName])
   }
@@ -35,6 +37,10 @@ class App extends React.Component {
     if(_sheetid){
       this.setState({sheetid:_sheetid})
     }
+  }
+
+  setUser =(_user)=>{
+    this.setState({user:_user})
   }
   
 
@@ -46,12 +52,16 @@ class App extends React.Component {
       <React.Fragment>
         <Navbar bg="white" variant="transparent">
         <Container className="topNav">
-          <Navbar.Brand>Share Sheet</Navbar.Brand>
-          <div className="me-auto">
+          <div className='logo'>
+             <img className ="logoPicture" src="https://i.im.ge/2022/07/26/FhdeoD.png"></img>
+             <h6 className='logoWord'>Share.Sheet</h6>
+          </div>
+          <ButtonGroup size="lg" aria-label="Main page buttons">
              <Button variant="dark" onClick={()=>{this.setActive('HomePage')}} >Home</Button>
-             <Button variant="dark" onClick={()=>{this.setActive('AddSheet')}} >Add Piano Sheet</Button>
-             <Button variant="dark" onClick={()=>{this.setActive('DeleteSheetPage')}} >Delete Piano Sheet</Button>
-          </div >
+             <Button variant="dark" onClick={()=>{this.setActive('AddSheet')}} >Add Sheet</Button>
+             <Button variant="dark" onClick={()=>{this.setActive('EditSheetPage')}} >Edit Sheet</Button>
+             <Button variant="dark" onClick={()=>{this.setActive('LoginPage')}} >{this.state.user.username? this.state.user.username :'Login'}</Button>
+          </ButtonGroup>
         </Container>
       </Navbar>
         {this.renderPage(this.state.active)}      
