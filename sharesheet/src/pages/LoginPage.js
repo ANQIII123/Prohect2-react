@@ -127,6 +127,7 @@ export default function LoginPage({ setUser }) {
                                 <MDBTabsLink
                                     onClick={() => handleLoginRegisterClick('login')}
                                     active={loginRegisterActive === 'login'}
+                                    
                                 >
                                     Login
                                 </MDBTabsLink>
@@ -134,7 +135,7 @@ export default function LoginPage({ setUser }) {
                             <MDBTabsItem>
                                 <MDBTabsLink
                                     onClick={() => handleLoginRegisterClick('register')}
-                                    active={loginRegisterActive === 'register'}
+                                    active={loginRegisterActive === 'register'}                                    
                                 >
                                     Register
                                 </MDBTabsLink>
@@ -165,7 +166,7 @@ export default function LoginPage({ setUser }) {
                                 }
 
 
-                                <MDBBtn className='mb-4' onClick={() => { handleLogin() }} block>
+                                <MDBBtn className='mb-4' onClick={() => { handleLogin() }} color='dark' block>
                                     Sign in
                                 </MDBBtn>
 
@@ -198,7 +199,7 @@ export default function LoginPage({ setUser }) {
                                     )
                                 }
 
-                                <MDBBtn className='mb-4' onClick={() => { handleRegister() }} block>
+                                <MDBBtn className='mb-4' onClick={() => { handleRegister() }} color='dark' block>
                                     Register
                                 </MDBBtn>
 
