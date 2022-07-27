@@ -42,6 +42,7 @@ export default class AddSheet extends React.Component {
 
     } 
 
+
     addNewSheet= async ()=>{
 
         let newsheet = this.state.mysheet;
@@ -59,7 +60,6 @@ export default class AddSheet extends React.Component {
         alert('sheet added!')
 
     }
-
 
     addComposer(){ 
         console.log('add composer')

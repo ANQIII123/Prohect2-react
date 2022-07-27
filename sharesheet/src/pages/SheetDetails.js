@@ -2,7 +2,7 @@
 import axios from "axios";
 import AllSheet from '../component/AllSheet.js';
 import Sheet from "../models/Sheet";
-import {Container, Navbar, Button} from 'react-bootstrap'
+import {Container, Navbar, Form, Button} from 'react-bootstrap'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -66,10 +66,89 @@ export default class SheetDetails extends React.Component {
     }
 
 
+    
+    filluserToShow(){
+
+        let userToShow = []
+
+        this.state.sheet.cover.reviews.forEach(eachReview => {
+
+            userToShow.push(
+                <a>
+                    {eachReview.user}
+                </a>        
+                )          
+        });
+
+
+        return(userToShow)
+    }
+
+    fillratingToShow(){
+
+        let ratingToShow = []
+
+        this.state.sheet.cover.reviews.forEach(eachReview => {
+
+            ratingToShow.push(
+                <a>
+                    {eachReview.rating}
+                </a>        
+                )          
+        });
+
+
+        return(ratingToShow)
+    }
+
+
+
+
+     
+    //     addReviews= async ()=>{
+    
+    //         let newreviews = this.state.reviews;
+    //         this.state.sheet.cover.newreviews = this.state.reviews;
+    
+    //         let result = await axios.post(this.url + '/reviews',
+    //             {
+    //                 "reviews": newreviews,
+    //             })
+    //         console.log(result);
+    
+    //         alert('reviews added!')
+    
+    //     }
+    
+    //     addComment(){
+    //         console.log('add comments')
+    //         this.setState(this.setState(prevState => ({
+    //             commentFields: [...prevState.commentFields,     <Form.Group className="mb-3" key={prevState.composerFields.length}>
+    //             <Form.Label>comment: {prevState.commentFields.length+1}</Form.Label>
+    //                 <Form.Control type="text" name={'comment'+ prevState.commentFields.length} onChange={(event)=>{
+    //                     let newcomment = this.state.comment
+    //                     newcomment[prevState.commentFields.length] = event.target.value
+    //                     this.setState({comment:newcomment})
+    //                     console.log(this.state)
+    //                 }}/>
+    //             </Form.Group>]
+    //           }))
+                       
+    //         )
+    //         console.log(this.state.commentFields)
+            
+    //     }
+    
+    //     deleteComment(){
+    //         this.setState(this.setState(prevState => ({
+    //             commentFields:prevState.commentFields.slice(0,-1),
+    //             comment:prevState.comment.slice(0,-1)
+    //         })))        
+    //     }
+
+
+
     render() {
-
-        
-
 
         return (
             <React.Fragment>
@@ -82,9 +161,9 @@ export default class SheetDetails extends React.Component {
                                             >Back</button>
    <div className="sheetDetails">
          <div className='detailsContainer'>  
-                <h5>Song Name:</h5>
+                <h5>Name:</h5>
                 <h1>{this.state.sheet.original.songName}</h1>
-                <h1 style={{height:'4rem', marginBottom:'3px'}}>Name: {this.state.sheet.original.songName}</h1>
+                {/* <h1 style={{height:'4rem', marginBottom:'3px'}}>Name: {this.state.sheet.original.songName}</h1> */}
                 <h5>Original:</h5>
                 <h2>{this.state.sheet.original.composer && this.state.sheet.original.composer.join("，")}</h2>
                 <h5>Covered by:</h5>
@@ -95,9 +174,6 @@ export default class SheetDetails extends React.Component {
                 <h2>{this.state.sheet.cover.difficulty}</h2>
                 <h5>Price:</h5>
                 <h2>{this.state.sheet.cover.cost}</h2>
-
-                <h5>Comments:</h5>
-                {this.fillCommentsToShow()}
 
                 <h5>Cover video:</h5>
                 <a href={this.state.sheet.cover.videoLink} target="_blank">
@@ -118,8 +194,42 @@ export default class SheetDetails extends React.Component {
                <button type="button" className="btn btn-lg btn-dark  btn-block" >
                        <span className="dollar">&#36;</span> Buy This!</button>
               </div>
-              
+               <h2>Reviews:</h2>
+                   <div className="reviewBox">        
+                        <span><img className="profileImg" src="https://cdn-icons-png.flaticon.com/512/5016/5016137.png"></img></span>
+                        <span>{this.filluserToShow()}</span>
+                        <h4><span style={{paddingTop:'40px'}}>{this.fillratingToShow()}</span><span><img className="ratingImg" src="https://www.nicepng.com/png/full/184-1841549_turquoise-cartoon-star-dark-yellow-star-shape-yellow.png"></img></span></h4>
+                            <h6>{this.fillCommentsToShow()}</h6>
+                  </div>
+                  {/* <div className="reviewBox">        
+                        <span><img className="profileImg" src="https://cdn-icons-png.flaticon.com/512/5016/5016137.png"></img></span>
+                        <span>Nakao22</span>
+                        <h4><span style={{paddingTop:'40px'}}>5</span><span><img className="ratingImg" src="https://www.nicepng.com/png/full/184-1841549_turquoise-cartoon-star-dark-yellow-star-shape-yellow.png"></img></span></h4>
+                            <h6>After 4 years, I finally can play this piece. I am so happy that anime music become a motivation for me to play the piano.</h6>
+                  </div>
+                  <div className="reviewBox">        
+                        <span><img className="profileImg" src="https://cdn-icons-png.flaticon.com/512/5016/5016137.png"></img></span>
+                        <span>Kazuyuki</span>
+                        <h4><span style={{paddingTop:'40px'}}>5</span><span><img className="ratingImg" src="https://www.nicepng.com/png/full/184-1841549_turquoise-cartoon-star-dark-yellow-star-shape-yellow.png"></img></span></h4>
+                            <h6>This is just too beautiful, there was a time where I would listen to this song nonstop,
+and to this day it seems I never got tired of it</h6>
+                  </div> */}
+                   <Button className="btn-dark mt-3 margin-left" onClick={()=>this.addComment()}>Add comment</Button> 
+                   {/* <div>
+                            <Form.Group>
+                                <Form.Label>Post reviews:</Form.Label>
+  {this.state.reviewsFields}
+                                <br />
+    <Button className="btn-dark mt-3 margin-left" onClick={()=>this.addComment()}>Add comment</Button> 
+                                <Button className="btn-dark mt-3 margin-left" onClick={()=>this.deleteComment()}>Delete comment</Button>
+                                <br />
+                                <br />
+                                <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addReviews()}>Post</Button>
+                            </Form.Group>
+                         </div> */}
          </div>
+
+  
          
  
          <div className='animaeRelatedContainer'> 
@@ -145,228 +255,4 @@ export default class SheetDetails extends React.Component {
 
         )
     }
-
 }
-
-// import axios from "axios";
-// import Sheet from "./models/Sheet";
-
-// import React, { useState, useEffect, useContext } from 'react'
-// import { useParams } from 'react-router-dom'
-
-    
-
-// export default class SheetDetails extends React.Component{
-//    constructor(props){
-//     super(props);
-   
-//      this.state = {
-//         sheet:new Sheet
-//      }
-//     }
- 
-// componentDidMount() {
-//     const query = new URLSearchParams(this.props);
-//     console.log(query)
-
-//  axios.post("https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io" + "/sheet",
-//  {
-//         "id": '62cf63dd412536655375749f'
-//       })
-
-//         .then(response => {
-//             console.log(response);
-//             const sheet = response.data;
-//             this.setState({
-//                 sheet
-//             });
-
-//         })
-//         .catch(function (error) {
-//             console.log(error);
-//         });
-    
-//     return (
-//         <React.Fragment>
-//             {/* {JSON.stringify(this.state.sheet)} */}
-// <div>
-// <div className="sheetDetails">
-//      <div className='detailsContainer'>  
-//             <h5>Song Name:</h5>
-//             <h1>{this.state.sheet.original.songName}</h1>
-//             <h5>Composer:</h5>
-//             <h2>{this.state.sheet.original.composer}</h2>
-//             <h5>Pages:</h5>
-//             <h2>{this.state.sheet.cover.numberOfPages}</h2>
-//             <h5>Difficulty:</h5>
-//             <h2>{this.state.sheet.cover.difficulty}</h2>
-//             <h5>Price:</h5>
-//             <h2>{this.state.sheet.cover.cost}</h2>
-//             <h5>Cover video:</h5>
-//             <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a>
-//             {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
-//             {/* col-3 col-s-3  */}
-                                          
-//      </div>
-
-//      <div className='pianoSheetContainer'> 
-//            <h3>Piano sheet Preview:</h3>
-//            <img src={this.state.sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//            {/* col-4.5 col-s-12 */}
-          
-//      </div>
-     
-
-//      <div className='animaeRelatedContainer'> 
-//             <div className="animaeNamePicContainer">
-//             <h4>Animae Name:</h4>
-//             <h1>{this.state.sheet.animaeRelated.animaeName}</h1>
-//             <img src={this.state.sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//             </div>
-
-//             <div className='animaeDescContainer'>
-//                 <h4>Animae Description:</h4>
-//                 <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
-//             </div>
-//          {/* col-4 col-s-9  */}
-//      </div>
-//   </div>
-// </div>
-
-//         </React.Fragment>
-
-
-//     )
-//  }
-// }
-
-
-//     componentDidMount(){
-//         axios
-//             }
-//     return (
-// <React.Fragment>
-// <div>
-//    <div className="sheetDetails">
-//          <div className='detailsContainer'>  
-//                 <h5>Song Name:</h5>
-//                 <h1>{this.state.sheet.original.songName}</h1>
-//                 <h5>Composer:</h5>
-//                 <h2>{this.state.sheet.original.composer}</h2>
-//                 <h5>Pages:</h5>
-//                 <h2>{this.state.sheet.cover.numberOfPages}</h2>
-//                 <h5>Difficulty:</h5>
-//                 <h2>{this.state.sheet.cover.difficulty}</h2>
-//                 <h5>Price:</h5>
-//                 <h2>{this.state.sheet.cover.cost}</h2>
-//                 <h5>Cover video:</h5>
-//                 <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a>
-//                 {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
-//                 {/* col-3 col-s-3  */}
-                                              
-//          </div>
-
-//          <div className='pianoSheetContainer'> 
-//                <h3>Piano sheet Preview:</h3>
-//                <img src={this.state.sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//                {/* col-4.5 col-s-12 */}
-              
-//          </div>
-         
- 
-//          <div className='animaeRelatedContainer'> 
-//                 <div className="animaeNamePicContainer">
-//                 <h4>Animae Name:</h4>
-//                 <h1>{this.state.sheet.animaeRelated.animaeName}</h1>
-//                 <img src={this.state.sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//                 </div>
-
-//                 <div className='animaeDescContainer'>
-//                     <h4>Animae Description:</h4>
-//                     <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
-//                 </div>
-//              {/* col-4 col-s-9  */}
-//          </div>
-//    </div>
-// </div>
-
-       
-//                     </React.Fragment>
-//                         )
-
-//                  }
-//         )
-//    }
-//         </React.Fragment>
-// )}
- 
-//  async() => {
-//         let response = await axios.post("https://3000-anqiii123-project2expre-wy8oi99z9ng.ws-us54.gitpod.io" + "/sheet",{
-//             "id": '62cf63dd412536655375749f'
-//         })
-
-//             .then(response => {
-//                 console.log(response);
-//                 const sheet = response.data;
-//                 this.setState({
-//                     sheet
-//                 });
-
-//             })
-//             .catch(function (error) {
-//                 console.log(error);
-//             });
-
-    
-
-//         return (
-//             <React.Fragment>
-//                 {/* {JSON.stringify(this.state.sheet)} */}
-// <div>
-//    <div className="sheetDetails">
-//          <div className='detailsContainer'>  
-//                 <h5>Song Name:</h5>
-//                 <h1>{this.state.sheet.original.songName}</h1>
-//                 <h5>Composer:</h5>
-//                 <h2>{this.state.sheet.original.composer}</h2>
-//                 <h5>Pages:</h5>
-//                 <h2>{this.state.sheet.cover.numberOfPages}</h2>
-//                 <h5>Difficulty:</h5>
-//                 <h2>{this.state.sheet.cover.difficulty}</h2>
-//                 <h5>Price:</h5>
-//                 <h2>{this.state.sheet.cover.cost}</h2>
-//                 <h5>Cover video:</h5>
-//                 <a href={this.state.sheet.cover.videoLink}>Click To Watch!</a>
-//                 {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
-//                 {/* col-3 col-s-3  */}
-                                              
-//          </div>
-
-//          <div className='pianoSheetContainer'> 
-//                <h3>Piano sheet Preview:</h3>
-//                <img src={this.state.sheet.cover.pianoSheetUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//                {/* col-4.5 col-s-12 */}
-              
-//          </div>
-         
- 
-//          <div className='animaeRelatedContainer'> 
-//                 <div className="animaeNamePicContainer">
-//                 <h4>Animae Name:</h4>
-//                 <h1>{this.state.sheet.animaeRelated.animaeName}</h1>
-//                 <img src={this.state.sheet.cover.imageUrl} style={{maxWidth:'100%' ,maxHeight:'100%'}}/>
-//                 </div>
-
-//                 <div className='animaeDescContainer'>
-//                     <h4>Animae Description:</h4>
-//                     <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
-//                 </div>
-//              {/* col-4 col-s-9  */}
-//          </div>
-//    </div>
-// </div>
-
-//             </React.Fragment>
-
-//         )
-

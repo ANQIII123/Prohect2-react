@@ -15,46 +15,57 @@ html,body
    color:white;
    font-family: 'Lucida Handwriting', cursive;
 }
-/* .App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  } */
-  
 
+.box-animate{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  animation-name: pippo;
+  animation-duration: 1s ;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.scroll_area{
+  background-color:rgb(0, 0, 0, 0.7);
+  font-family:'lucidaHandwriting',cursive;
+  position: relative;
+  top: 22vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  Z-index: 99 
+}
+@keyframes pippo {
+  0% {top: 45%}
+  100% {top: 55%}
+}
+
+
+.reviewBox{
+  font-family:'Lucida Sans Unicode',cursive;
+  border: 2px;
+  margin:3%;
+  border-color: black;
+  border-style: dashed;
+}
+
+.profileImg{
+  height:40px;
+  width:auto;
+  margin:2%;
+  border:2px solid;
+  border-color: black;
+  border-radius: 1.5%;
+}
+
+.ratingImg{
+  height:35px;
+  width:auto;
+  margin:0%;
+}
 .searchPlace{
   display:flex;
   align-items:center
@@ -126,7 +137,7 @@ html,body
   position:relative;
   text-align: center;
   font-family:'Brush Script MT', cursive;
-  top:150%
+  top:10vw;
 }
 
 
@@ -206,6 +217,14 @@ html,body
   width:auto;
   display:flex;
   flex: 50%;
+}
+
+.pageButton{
+  margin:1%;
+}
+
+.result.bar{
+  font-size:0.5vw;
 }
 
 @media (max-width: 800px) {

@@ -56,12 +56,18 @@ class App extends React.Component {
              <img className ="logoPicture" src="https://i.im.ge/2022/07/26/FhdeoD.png"></img>
              <h6 className='logoWord'>Share.Sheet</h6>
           </div>
-          <ButtonGroup size="lg" aria-label="Main page buttons">
-             <Button variant="dark" onClick={()=>{this.setActive('HomePage')}} >Home</Button>
-             <Button variant="dark" onClick={()=>{this.setActive('AddSheet')}} >Add Sheet</Button>
-             <Button variant="dark" onClick={()=>{this.setActive('EditSheetPage')}} >Edit Sheet</Button>
-             <Button variant="dark" onClick={()=>{this.setActive('LoginPage')}} >{this.state.user.username? this.state.user.username :'Login'}</Button>
-          </ButtonGroup>
+          <div className='topButton'>
+            <div className='pageButton'>
+              <ButtonGroup aria-label="Main page buttons">
+                <Button variant="dark" onClick={()=>{this.setActive('HomePage')}} >Home</Button>
+                <Button variant="dark" onClick={()=>{this.setActive('AddSheet')}} >Upload</Button>
+                <Button variant="dark" onClick={()=>{this.setActive('EditSheetPage')}} >Search</Button>
+              </ButtonGroup>
+            </div>
+            <div className='loginButton'>
+          <Button variant="dark" onClick={()=>{this.setActive('LoginPage')}} >{this.state.user.username? this.state.user.username :'Login'}</Button>
+            </div>
+         </div>
         </Container>
       </Navbar>
         {this.renderPage(this.state.active)}      

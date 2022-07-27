@@ -55,15 +55,17 @@ export default class Homepage extends React.Component {
         <div className="background">
            <div className="allSheetContainer">
             <Row>
-              <div className="col-lg-4 offset-sm-1 ">
+              <div className="col-lg-4 offset-sm-2 ">
                 {/* <img src="https://i.im.ge/2022/07/26/FhdeoD.png"></img> */}
                 <h1 className='bgText'>Welcome to Share.Sheet</h1>
               </div>
             </Row>
 
-            <Row lg={12} style={{ position: 'relative', top: '60vh', justifyContent: 'center', alignItems: 'center', display: 'flex', zIndex: 99 }}>
-              <span style={{textAlign: "center", backgroundColor:'rgba(0, 0, 0, 0.45)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}>View all sheets</span>
-              <span style={{textAlign: "center", backgroundColor:'rgba(0, 0, 0, 0.45)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}><FaAngleDown/></span>
+            <Row lg={12} >
+              <div className='scroll_area'>
+                    <div style={{textAlign: "center",color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}>View all sheets</div>
+                    <span className="box-animate" style={{marginTop:"40px",textAlign: "center",backgroundColor:'rgba(255, 255, 255, 0)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}><FaAngleDown/></span>
+              </div>
             </Row>
 
 

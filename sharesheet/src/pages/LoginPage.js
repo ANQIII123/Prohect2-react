@@ -118,10 +118,10 @@ export default function LoginPage({ setUser }) {
     return (
         <React.Fragment>
 
-            <div className='row d-flex justify-content-center'>
-                <div className='search_background col-sm-9' style={{ backgroundColor: 'white', padding: '2rem' }}>
+            <div className=' row d-flex justify-content-center '>
+                <div className='search_background col-sm-10' style={{ backgroundColor: 'white', padding: '2rem' }}>
 
-                    <div style={{ width: '26rem', marginLeft: 'auto', marginRight: 'auto' }}>
+                    <div style={{ width: '22rem', marginLeft: 'auto', marginRight: 'auto' }}>
                         <MDBTabs pills justify className='mb-3'>
                             <MDBTabsItem>
                                 <MDBTabsLink
