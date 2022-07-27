@@ -54,7 +54,7 @@ class App extends React.Component {
         <Container className="topNav">
           <div className='logo'>
              <img className ="logoPicture" src="https://i.im.ge/2022/07/26/FhdeoD.png"></img>
-             <h6 className='logoWord'>Share.Sheet</h6>
+             <h6 className='logoWord'>Anime Share.Sheet</h6>
           </div>
           <div className='topButton'>
             <div className='pageButton'>

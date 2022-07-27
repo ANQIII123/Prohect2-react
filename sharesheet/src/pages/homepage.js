@@ -57,7 +57,7 @@ export default class Homepage extends React.Component {
             <Row>
               <div className="col-lg-4 offset-sm-2 ">
                 {/* <img src="https://i.im.ge/2022/07/26/FhdeoD.png"></img> */}
-                <h1 className='bgText'>Welcome to Share.Sheet</h1>
+                <h1 className='bgText'>Welcome to Anime Share.Sheet</h1>
               </div>
             </Row>
 

@@ -177,9 +177,9 @@ export default class SheetDetails extends React.Component {
 
                 <h5>Cover video:</h5>
                 <a href={this.state.sheet.cover.videoLink} target="_blank">
-                <img className="pianoPlay" alt="Piano" src="https://www.pngmart.com/files/16/Vector-Piano-PNG-Photos.png"></img>
+                <img className="pianoPlay" alt="Piano" src="https://cdn-icons-png.flaticon.com/512/26/26762.png?w=360"></img>
                 </a>
-                <h6>Click on the piano to listen!</h6>
+                <h6>Click to listen!</h6>
                 {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
                 {/* col-3 col-s-3  */}
                                               
