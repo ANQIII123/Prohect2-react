@@ -99,6 +99,7 @@ export default class Homepage extends React.Component {
               </a>
               </span>
               <h2>sharesheet233@gmail.com   /   +65 82375829</h2>
+              
               </div>
                 <div className="anya" style={{ position:"absolute", "right":'100px', bottom: '55px'}}>
                     <Popup trigger={<img style={{"height": "100px","width":"auto"}} src='https://i.im.ge/2022/07/26/FUOHOW.png'></img>} position="top center">

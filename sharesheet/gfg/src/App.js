@@ -17,6 +17,8 @@ function App() {
         >
           Learn React
         </a>
+        <title>Anime Sharesheet</title>
+    <link href="./static/colors.ico"></link>
       </header>
     </div>
   );

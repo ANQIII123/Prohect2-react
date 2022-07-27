@@ -3,6 +3,7 @@ import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Sheet from '../models/Sheet';
 import './AddSheet.css';
+import { validateObjectFilled } from '../component/helper';
 
     
 export default class AddSheet extends React.Component {
@@ -17,7 +18,8 @@ export default class AddSheet extends React.Component {
             generatedFields : [],
             composerFields:[],
             composer:[],
-            selectedKeywords:[]
+            selectedKeywords:[],
+            formError:''
         }
         console.log(this.state.composerFields)
         this.updateFormField = this.updateFormField.bind(this);
@@ -45,19 +47,48 @@ export default class AddSheet extends React.Component {
 
     addNewSheet= async ()=>{
 
+        let formError = false
+
         let newsheet = this.state.mysheet;
         newsheet.cover.coverComposer = this.state.composer;
-        this.state.selectedKeywords.forEach(selectedKeyword => {
-            newsheet.cover.keywords.push(selectedKeyword)
+        
+        newsheet.cover.keywords= this.state.selectedKeywords
+
+        Object.values(newsheet).forEach(nestedObj => {
+            let emptyKeys =validateObjectFilled(nestedObj,['reviews']);
+            if(emptyKeys.length>=1){
+                console.log(emptyKeys)
+                this.setState({
+                    formError:'please fill in all fields'
+                })
+                formError = true
+            }
+
         });
 
-        let result = await axios.post(this.url + '/addSheet',
-            {
-                "sheet": newsheet,
+        if(isNaN(newsheet.cover.cost)){
+            this.setState({
+                formError:'cost must be a number'
             })
-        console.log(result);
+            formError = true
+        }
 
-        alert('sheet added!')
+        console.log(formError)
+
+        if(formError == false){
+
+            this.setState({
+                formError:''
+            })
+
+            let result = await axios.post(this.url + '/addSheet',
+            {"sheet": newsheet})
+
+            console.log(result);
+
+            alert('sheet added!')
+        }
+
 
     }
 
@@ -104,7 +135,7 @@ export default class AddSheet extends React.Component {
                     }else{
                         newSelectedKeyword = newSelectedKeyword.filter((ele)=>{return ele != keywords[i]});
                     }
-                    this.setState({selectedKeyword:newSelectedKeyword})
+                    this.setState({selectedKeywords:newSelectedKeyword})
                 }}
               />
             </div>)
@@ -192,6 +223,15 @@ export default class AddSheet extends React.Component {
                             <Button className="btn-dark mt-3 margin-left" onClick={()=>this.deleteComposer()}>Delete name</Button>
                             <br />
                             <br />
+
+                            {this.state.formError == '' ? null :
+                                    (
+                                        <Row className="mb-3" style={{ color: 'red' }}>
+                                            <p>{this.state.formError}</p>
+                                        </Row>
+                                    )
+                                }
+
                             <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addNewSheet()}>Add this</Button>
                         </Form.Group>
                         <img className='umaru' src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>

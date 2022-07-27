@@ -17,6 +17,8 @@ export function SheetSearchBox(props) {
     const searchOne = async () => {
         console.log('search clicked')
 
+        console.log(difficulty)
+
         let response = await axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getsheet`,
             {
                 keyword: keyword,
@@ -47,7 +49,8 @@ export function SheetSearchBox(props) {
                 </Col>
 
                 <Col md={2}>
-                    <Form.Select className='mb-3' onChange={e => setDifficulty(e.target.value)}>
+                    <Form.Select className='mb-3' onChange={e => setDifficulty(e.target.value)}>             
+                        <option value="">All difficulty</option>
                         <option value="Normal">Normal</option>
                         <option value="Easy">Easy</option>
                         <option value="Hard">Hard</option>

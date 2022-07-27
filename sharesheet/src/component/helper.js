@@ -21,7 +21,6 @@ export function validateObjectFilled(_object, exceptionKeys = [], keysToCheck=[]
     }
     
     let keys = Object.keys(_object)
-    console.log('keys are'+keys)
 
     keys = keys.filter( ( el ) => !exceptionKeys.includes( el ) ); //keep only the keys that are not in the exceptionKeys array
     
