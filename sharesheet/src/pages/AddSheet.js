@@ -8,7 +8,7 @@ import { validateObjectFilled } from '../component/helper';
     
 export default class AddSheet extends React.Component {
 
-    url = "https://anqi-tgc18-project-2.herokuapp.com/"
+    url = "https://anqi-tgc18-project-2.herokuapp.com"
     
 
     constructor(props){

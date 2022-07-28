@@ -15,7 +15,7 @@ import { FaAngleDown } from "react-icons/fa";
 export default class Homepage extends React.Component {
 
 
-  url = "https://anqi-tgc18-project-2.herokuapp.com/"
+  url = "https://anqi-tgc18-project-2.herokuapp.com"
 
 
   constructor(props){
