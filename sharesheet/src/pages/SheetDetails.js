@@ -28,7 +28,7 @@ export default class SheetDetails extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getSheetById`,
+        axios.post(`https://anqi-tgc18-project-2.herokuapp.com/getSheetById`,
             {
                 "id": this.props.sheetid,
             })
@@ -71,61 +71,11 @@ export default class SheetDetails extends React.Component {
         return (commentsToShow)
     }
 
-
-
-
-
-
-    //     addReviews= async ()=>{
-
-    //         let newreviews = this.state.reviews;
-    //         this.state.sheet.cover.newreviews = this.state.reviews;
-
-    //         let result = await axios.post(this.url + '/reviews',
-    //             {
-    //                 "reviews": newreviews,
-    //             })
-    //         console.log(result);
-
-    //         alert('reviews added!')
-
-    //     }
-
-    //     addComment(){
-    //         console.log('add comments')
-    //         this.setState(this.setState(prevState => ({
-    //             commentFields: [...prevState.commentFields,     <Form.Group className="mb-3" key={prevState.composerFields.length}>
-    //             <Form.Label>comment: {prevState.commentFields.length+1}</Form.Label>
-    //                 <Form.Control type="text" name={'comment'+ prevState.commentFields.length} onChange={(event)=>{
-    //                     let newcomment = this.state.comment
-    //                     newcomment[prevState.commentFields.length] = event.target.value
-    //                     this.setState({comment:newcomment})
-    //                     console.log(this.state)
-    //                 }}/>
-    //             </Form.Group>]
-    //           }))
-
-    //         )
-    //         console.log(this.state.commentFields)
-
-    //     }
-
-    //     deleteComment(){
-    //         this.setState(this.setState(prevState => ({
-    //             commentFields:prevState.commentFields.slice(0,-1),
-    //             comment:prevState.comment.slice(0,-1)
-    //         })))        
-    //     }
-
-
-
     render() {
 
         return (
             <React.Fragment>
 
-
-                {/* {JSON.stringify(this.state.sheet)} */}
                 <div>
                     <button type="button" className="btn btn-dark"
                         onClick={() => this.props.setActive('HomePage')}
@@ -134,7 +84,6 @@ export default class SheetDetails extends React.Component {
                         <div className='detailsContainer'>
                             <h5>Name:</h5>
                             <h1>{this.state.sheet.original.songName}</h1>
-                            {/* <h1 style={{height:'4rem', marginBottom:'3px'}}>Name: {this.state.sheet.original.songName}</h1> */}
                             <h5>Original:</h5>
                             <h2>{this.state.sheet.original.composer && this.state.sheet.original.composer.join("，")}</h2>
                             <h5>Covered by:</h5>
@@ -151,9 +100,7 @@ export default class SheetDetails extends React.Component {
                                 <img className="pianoPlay" alt="Piano" src="https://cdn-icons-png.flaticon.com/512/26/26762.png?w=360"></img>
                             </a>
                             <h6>Click to listen!</h6>
-                            {/* <p>Rating and comments:{this.state.sheet.cover.reviews}</p> */}
-                            {/* col-3 col-s-3  */}
-
+                           
                         </div>
 
                         <div className='pianoSheetContainer'>
@@ -169,32 +116,6 @@ export default class SheetDetails extends React.Component {
 
                             {this.fillCommentsToShow()}
 
-                            {/* <div className="reviewBox">        
-                        <span><img className="profileImg" src="https://cdn-icons-png.flaticon.com/512/5016/5016137.png"></img></span>
-                        <span>Nakao22</span>
-                        <h4><span style={{paddingTop:'40px'}}>5</span><span><img className="ratingImg" src="https://www.nicepng.com/png/full/184-1841549_turquoise-cartoon-star-dark-yellow-star-shape-yellow.png"></img></span></h4>
-                            <h6>After 4 years, I finally can play this piece. I am so happy that anime music become a motivation for me to play the piano.</h6>
-                  </div>
-                  <div className="reviewBox">        
-                        <span><img className="profileImg" src="https://cdn-icons-png.flaticon.com/512/5016/5016137.png"></img></span>
-                        <span>Kazuyuki</span>
-                        <h4><span style={{paddingTop:'40px'}}>5</span><span><img className="ratingImg" src="https://www.nicepng.com/png/full/184-1841549_turquoise-cartoon-star-dark-yellow-star-shape-yellow.png"></img></span></h4>
-                            <h6>This is just too beautiful, there was a time where I would listen to this song nonstop,
-and to this day it seems I never got tired of it</h6>
-                  </div> */}
-                            <Button className="btn-dark mt-3 margin-left" onClick={() => this.addComment()}>Add comment</Button>
-                            {/* <div>
-                            <Form.Group>
-                                <Form.Label>Post reviews:</Form.Label>
-  {this.state.reviewsFields}
-                                <br />
-    <Button className="btn-dark mt-3 margin-left" onClick={()=>this.addComment()}>Add comment</Button> 
-                                <Button className="btn-dark mt-3 margin-left" onClick={()=>this.deleteComment()}>Delete comment</Button>
-                                <br />
-                                <br />
-                                <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addReviews()}>Post</Button>
-                            </Form.Group>
-                         </div> */}
                         </div>
 
 
@@ -214,7 +135,6 @@ and to this day it seems I never got tired of it</h6>
 
                                 <h5>{this.state.sheet.animaeRelated.animaeDescription}</h5>
                             </div>
-                            {/* col-4 col-s-9  */}
                         </div>
                     </div>
                 </div>

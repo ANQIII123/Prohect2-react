@@ -76,7 +76,7 @@ export function EditSheetPage({setActive}) {
             return
         }
 
-        let result = await axios.post("https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/deletesheet",
+        let result = await axios.post("https://anqi-tgc18-project-2.herokuapp.com/deletesheet",
             { id: _id })
 
         if (result.data.acknowledged) {

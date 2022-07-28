@@ -1,4 +1,3 @@
-// import'./App.css';
 import Homepage from './pages/homepage'
 import AddSheet from "./pages/AddSheet.js";
 import SheetDetails from './pages/SheetDetails';
@@ -50,10 +49,6 @@ class App extends React.Component {
     return (
 
       <React.Fragment>
-        {/* <header>
-        <title>Anime Sharesheet</title>
-    <link href="https://i.im.ge/2022/07/26/FhdeoD.png"></link>
-        </header> */}
         <Navbar bg="white" variant="transparent">
           <Container className="topNav">
             <div className='logo'>

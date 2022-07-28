@@ -19,7 +19,7 @@ export function SheetSearchBox(props) {
 
         console.log(difficulty)
 
-        let response = await axios.post(`https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/getsheet`,
+        let response = await axios.post(`https://anqi-tgc18-project-2.herokuapp.com/getsheet`,
             {
                 keyword: keyword,
                 limit: parseInt(limit),

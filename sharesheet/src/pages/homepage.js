@@ -15,38 +15,14 @@ import { FaAngleDown } from "react-icons/fa";
 export default class Homepage extends React.Component {
 
 
-  url = "https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io"
+  url = "https://anqi-tgc18-project-2.herokuapp.com/"
 
-
-  // state = {
-  //   active: 'Homepage'
-  // }
-
-  // setActive = (active) => {
-  //   this.setState({
-  //     'active': active
-  //   })
-  // }
-
-  // doneAddingSheet = () => {
-  //   this.setActive('/addSheet')
-  // }
-
-  // renderPage() {
-  //   if (this.state.active === '/addSheet') {
-  //     return <AddSheet doneAddingSheet={this.doneAddingSheet} />
-  //   }
-  // }
 
   constructor(props){
     super(props)
-    // this.state={
-    //   _feedback:''
-    // }
+
   }
 
-  // let popup = document.getElementById("myPopup");
-  // popup.classList.toggle("show");
 
   render() {
     return (
@@ -81,8 +57,6 @@ export default class Homepage extends React.Component {
 
 
 
-
-          {/* <Link to="/addSheet"> addSheet </Link> */}
         </div>
   
         <div className='contact-us'>
@@ -114,8 +88,6 @@ export default class Homepage extends React.Component {
                   </div>
 
 
-   
-        {/* {this.renderPage()} */}
-      </React.Fragment>)
+        </React.Fragment>)
   }
 }

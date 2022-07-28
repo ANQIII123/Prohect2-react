@@ -16,7 +16,7 @@ import {Row, Col} from 'react-bootstrap'
 
 
         componentDidMount() {
-            let url="https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io";
+            let url="https://anqi-tgc18-project-2.herokuapp.com/";
             
             axios.get(url+`/get_all_sheet`)
                 .then(res => {
@@ -61,17 +61,6 @@ import {Row, Col} from 'react-bootstrap'
                                 </div>
                             )
                     }
-                                        {/* <div className='pagination'>
-                                                 <nav aria-label="Page navigation example">
-                                                     <ul className="pagination">
-                                                    <li className="page-item"><a className="page-link" href="#">《</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">》</a></li>
-                                                       </ul>
-                                                </nav>
-                                        </div> */}
                 </div>
 
             </React.Fragment>

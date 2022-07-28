@@ -97,7 +97,7 @@ export default function LoginPage({ setUser }) {
 
         setError('Checking with server')
 
-        let result = await axios.post('https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/register',
+        let result = await axios.post('https://anqi-tgc18-project-2.herokuapp.com//register',
             {
                 user: newUser
             })
