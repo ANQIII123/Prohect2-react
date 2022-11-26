@@ -211,10 +211,10 @@ html,body
   display: flex;
   flex-direction: row;
   text-align: center;
-  padding:1%;
+  padding:0.2px;
 }
 .logoPicture{
-  height:5vw;
+  height:3vw;
   width:auto;
   display:flex;
   flex: 50%;

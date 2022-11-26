@@ -8,7 +8,7 @@ import { validateObjectFilled } from '../component/helper';
     
 export default class UpdateSheet extends React.Component {
 
-    url = "https://anqi-tgc18-project-2.herokuapp.com"
+    url = "https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io"
     
 
     constructor(props){
@@ -30,7 +30,7 @@ export default class UpdateSheet extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://anqi-tgc18-project-2.herokuapp.com/getSheetById`,
+        axios.post(`https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io/getSheetById`,
             {
                 "id": this.props.sheetid,
             })

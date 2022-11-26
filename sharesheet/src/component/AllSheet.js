@@ -16,7 +16,7 @@ import {Row, Col} from 'react-bootstrap'
 
 
         componentDidMount() {
-            let url="https://anqi-tgc18-project-2.herokuapp.com";
+            let url="https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io";
             
             axios.get(url+`/get_all_sheet`)
                 .then(res => {

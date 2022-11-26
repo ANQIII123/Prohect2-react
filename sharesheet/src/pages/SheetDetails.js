@@ -28,7 +28,7 @@ export default class SheetDetails extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://anqi-tgc18-project-2.herokuapp.com/getSheetById`,
+        axios.post(`https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io/getSheetById`,
             {
                 "id": this.props.sheetid,
             })
@@ -93,7 +93,7 @@ export default class SheetDetails extends React.Component {
                             <h5>Difficulty level:</h5>
                             <h2>{this.state.sheet.cover.difficulty}</h2>
                             <h5>Price:</h5>
-                            <h2>{this.state.sheet.cover.cost}</h2>
+                            <h2>{this.state.sheet.cover.cost}SGD</h2>
 
                             <h5>Cover video:</h5>
                             <a href={this.state.sheet.cover.videoLink} target="_blank">

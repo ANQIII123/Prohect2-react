@@ -15,7 +15,7 @@ import { FaAngleDown } from "react-icons/fa";
 export default class Homepage extends React.Component {
 
 
-  url = "https://anqi-tgc18-project-2.herokuapp.com"
+  url = "https://anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io"
 
 
   constructor(props){
@@ -75,7 +75,7 @@ export default class Homepage extends React.Component {
               <h2>sharesheet233@gmail.com   /   +65 82375829</h2>
               
               </div>
-                <div className="anya" style={{ position:"absolute", "right":'100px', bottom: '55px'}}>
+                {/* <div className="anya" style={{ position:"absolute", "right":'100px', bottom: '55px'}}>
                     <Popup trigger={<img style={{"height": "100px","width":"auto"}} src='https://i.im.ge/2022/07/26/FUOHOW.png'></img>} position="top center">
                       <div>Let Anya know your feedbacks!</div>
                       
@@ -85,7 +85,7 @@ export default class Homepage extends React.Component {
                             }}>Submit</Button>
 
                     </Popup>
-                  </div>
+                  </div> */}
 
 
         </React.Fragment>)
