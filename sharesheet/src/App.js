@@ -88,7 +88,7 @@ class App extends React.Component {
 
         <Navbar bg="light" variant="light">
         <Container>
-        <h6 className='logoWord'>Anime Share.Sheet</h6>
+        <h6 className='logoWord' style={{"fontSize":"45px","color":"black"}}>Anime Share.Sheet</h6>
           <Navbar.Brand href="#home">
             <img
               src="https://i.im.ge/2022/07/26/FhdeoD.png"

@@ -16,7 +16,7 @@ import {Row, Col} from 'react-bootstrap'
 
 
         componentDidMount() {
-            let url="https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io";
+            let url="https://3000-anqiii123-project2expre-qv7br5s334n.ws-us77.gitpod.io";
             
             axios.get(url+`/get_all_sheet`)
                 .then(res => {
@@ -29,13 +29,26 @@ import {Row, Col} from 'react-bootstrap'
         render(){
             return(
             <React.Fragment>
-    
+
                 <div className="row px-3" >
                     {
                         this.state.sheets
                             .map(sheet =>
           
-                                <div className="col-6 col-lg-4 mt-2 mb-1" style={{padding:'0px'}} key={sheet._id}>
+
+                            //     <Card style={{ width: '18rem' }}>
+                            //     <Card.Img variant="top" src="holder.js/100px180" />
+                            //     <Card.Body>
+                            //       <Card.Title>Card Title</Card.Title>
+                            //       <Card.Text>
+                            //         Some quick example text to build on the card title and make up the
+                            //         bulk of the card's content.
+                            //       </Card.Text>
+                            //       <Button variant="primary">Go somewhere</Button>
+                            //     </Card.Body>
+                            //   </Card>
+
+                                <div className="col-12 col-lg-6 mt-2 mb-1" style={{padding:'40px'}} key={sheet._id}>
 
                                     <div className='sheetBox mx-auto' >
                             
@@ -67,4 +80,5 @@ import {Row, Col} from 'react-bootstrap'
             )
     }
 }
+ 
  

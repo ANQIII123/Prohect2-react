@@ -167,8 +167,8 @@ export default class AddSheet extends React.Component {
     
     return (
         <React.Fragment>
-   <div className='sheetPage'>        
-            <h1>Add a New Sheet!</h1>
+   <div className='sheetPage' style={{"fontFamily":"sansSerif","fontSize":"20px"}}>        
+            <h1>Upload a new piano music score!</h1>
               <div>
             <Form className='form'>
                 <Row>
@@ -228,7 +228,7 @@ export default class AddSheet extends React.Component {
 
                             <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addNewSheet()}>Add this</Button>
                         </Form.Group>
-                        <img className='umaru' src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                        <img className='umaru' src="https://www.seekpng.com/png/detail/164-1641459_transparent-haikyuu-haikyuu-transparent.png"></img>
                         </div>
                     </Col>
 
