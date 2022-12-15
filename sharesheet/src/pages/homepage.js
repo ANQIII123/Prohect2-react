@@ -15,21 +15,13 @@ import { FaAngleDown } from "react-icons/fa";
 export default class Homepage extends React.Component {
 
 
-  url = "https://3000-anqiii123-project2react-n60f0qeeiv7.ws-us79.gitpod.io"
+  url = "https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io"
 
 
   constructor(props){
     super(props)
 
 
-    function Example() {
-      const [show, setShow] = useState(false);
-    
-      const handleClose = () => setShow(false);
-      const handleShow = () => setShow(true);
-    
-      return (
-        
   }
 
 
@@ -41,8 +33,7 @@ export default class Homepage extends React.Component {
            <div className="allSheetContainer">
             <Row>
               <div className="col-lg-4 offset-sm-2 ">
-                
-                {/* <img src="https://i.im.ge/2022/07/26/FhdeoD.png"></img> */}
+
                 <h1 className='bgText'>Welcome to <br></br> Anime.Music Score</h1>
                 
               </div>
@@ -59,30 +50,9 @@ export default class Homepage extends React.Component {
           </div>
         </div>
 
-        <div id="allsheet" style={{position:"relative"}}>
+        <div id="allsheet" >
 
-          <div id="tutorial" style={{position:"absolute"}}>
-        
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
-
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
-}
-
-render(<Example />);
-          </div>
+       
           <AllSheet setActive={this.props.setActive}/>
            
 
@@ -117,6 +87,7 @@ render(<Example />);
                   </div> */}
 
 
-        </React.Fragment>)
+        </React.Fragment>
+  )
   }
 }
