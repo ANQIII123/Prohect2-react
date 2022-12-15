@@ -4,11 +4,12 @@ import axios from 'axios';
 import Sheet from '../models/Sheet';
 import './AddSheet.css';
 import { validateObjectFilled } from '../component/helper';
+import Swal from 'sweetalert2';
 
     
 export default class UpdateSheet extends React.Component {
 
-    url = "https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io"
+    url = "https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io"
     
 
     constructor(props){
@@ -30,7 +31,7 @@ export default class UpdateSheet extends React.Component {
         console.log(query)
 
 
-        axios.post(`https://3000-anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io/getSheetById`,
+        axios.post(`https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io/getSheetById`,
             {
                 "id": this.props.sheetid,
             })
@@ -137,9 +138,21 @@ export default class UpdateSheet extends React.Component {
             {"sheet": newsheet,
             "id":id})
 
-            console.log(result);
+            Swal.fire({
+                title: 'Do you want to save the changes to the music score?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+              }).then((result) => {
 
-            alert('sheet edited!')
+                if (result.isConfirmed) {
+                  Swal.fire('Saved!', '', 'success')
+                } else if (result.isDenied) {
+                  Swal.fire('Changes are not saved', '', 'info')
+                }
+              })
+              
         }
 
 
@@ -295,7 +308,7 @@ export default class UpdateSheet extends React.Component {
 
                             <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.editSheet()}>Edit Sheet</Button>
                         </Form.Group>
-                        <img className='umaru' src="https://i.im.ge/2022/07/25/FLuBFC.png"></img>
+                        {/* <img className='umaru' src="https://i.im.ge/2022/07/25/FLuBFC.png"></img> */}
                         </div>
                     </Col>
 

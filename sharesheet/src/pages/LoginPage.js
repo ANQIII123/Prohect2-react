@@ -9,6 +9,7 @@ import { validateObjectFilled, validateEmail } from '../component/helper';
 
 import axios from 'axios';
 import User from '../models/User';
+import Swal from 'sweetalert2';
 
 export default function LoginPage({ setUser }) {
 
@@ -46,7 +47,7 @@ export default function LoginPage({ setUser }) {
 
         setError('Checking with server')
 
-        let result = await axios.post('https://3000-anqiii123-project2expre-x3pfoh1qdt5.ws-us54.gitpod.io/login',
+        let result = await axios.post('https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io/login',
             {
                 "userEmail": tempuser.logUserEmail,
                 "password": tempuser.logUserPassword
@@ -60,7 +61,11 @@ export default function LoginPage({ setUser }) {
         else {
             setError('')
             setUser(result.data[1])
-            alert('login sucess')
+            Swal.fire(
+                'Login Success!',
+                'よかった！',
+                'success'
+            )
         }
 
     }
@@ -97,7 +102,7 @@ export default function LoginPage({ setUser }) {
 
         setError('Checking with server')
 
-        let result = await axios.post('https://anqi-tgc18-project-2.heroku/register',
+        let result = await axios.post('https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io/register',
             {
                 user: newUser
             })
@@ -105,37 +110,41 @@ export default function LoginPage({ setUser }) {
         if (!result[0]) {
             setError(result.data[1].reason)
             return
-        }
+        }else{
 
-        setError('register success');
-        alert('Registered success')
-
-
+         setError('register success');
+     Swal.fire(
+            'Registered successfully!',
+            'よかった！',
+            'success'
+        )}
     }
-
+    
 
 
     return (
         <React.Fragment>
 
-            <div className=' row d-flex justify-content-center '>
+            <div className=' row d-flex justify-content-center'>
                 <div className='search_background col-sm-10' style={{ backgroundColor: 'white', padding: '2rem' }}>
 
                     <div style={{ width: '22rem', marginLeft: 'auto', marginRight: 'auto' }}>
-                        <MDBTabs pills justify className='mb-3'>
+                        <MDBTabs pills justify className='mb-3 '>
                             <MDBTabsItem>
                                 <MDBTabsLink
+                                    className='bg-dark text-light'
                                     onClick={() => handleLoginRegisterClick('login')}
                                     active={loginRegisterActive === 'login'}
-                                    
+
                                 >
                                     Login
                                 </MDBTabsLink>
                             </MDBTabsItem>
                             <MDBTabsItem>
                                 <MDBTabsLink
+                                    className='bg-dark text-light'
                                     onClick={() => handleLoginRegisterClick('register')}
-                                    active={loginRegisterActive === 'register'}                                    
+                                    active={loginRegisterActive === 'register'}
                                 >
                                     Register
                                 </MDBTabsLink>
@@ -153,7 +162,11 @@ export default function LoginPage({ setUser }) {
                                         <MDBCheckbox label='Remember me' defaultChecked />
                                     </MDBCol>
                                     <MDBCol>
-                                        <a href='#' onClick={() => alert('we have send you an email to reset your password')}>Forgot password?</a>
+                                        <a href='#' onClick={() => Swal.fire(
+                                            'we have send you an email to reset your password',
+                                            'よかった！',
+                                            'success'
+                                        )}>Forgot password?</a>
                                     </MDBCol>
                                 </MDBRow>
 
@@ -164,7 +177,7 @@ export default function LoginPage({ setUser }) {
                                         </MDBRow>
                                     )
                                 }
-
+                                {/* onClick={() => this.props.setActive('HomePage')} */}
 
                                 <MDBBtn className='mb-4' onClick={() => { handleLogin() }} color='dark' block>
                                     Sign in

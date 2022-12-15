@@ -88,7 +88,7 @@ class App extends React.Component {
 
         <Navbar bg="light" variant="light">
         <Container>
-        <h6 className='logoWord' style={{"fontSize":"45px","color":"black"}}>Anime Share.Sheet</h6>
+        <h6 className='logoWord' style={{"fontSize":"3vw","color":"black"}}>Anime.Music Score</h6>
           <Navbar.Brand href="#home">
             <img
               src="https://i.im.ge/2022/07/26/FhdeoD.png"
@@ -100,11 +100,11 @@ class App extends React.Component {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home"  onClick={() => { this.setActive('HomePage') }}>Homepage</Nav.Link>
-            <Nav.Link href="#features" onClick={() => { this.setActive('AddSheet') }} >Upload</Nav.Link>
-            <Nav.Link href="#pricing" onClick={() => { this.setActive('EditSheetPage')}}>Search</Nav.Link>
+            <Nav.Link href="#upload" onClick={() => { this.setActive('AddSheet') }} >Upload</Nav.Link>
+            <Nav.Link href="#search" onClick={() => { this.setActive('EditSheetPage')}}>Search</Nav.Link>
             <div className='loginButton'>
                   {/* <Button variant="dark" onClick={() => { this.setActive('LoginPage') }} >{this.state.user.username ? this.state.user.username : 'Login'}</Button> */}
-                  <img style={{"height": "3vh","width":"auto","margin-left":"60px"}} onClick={() => { this.setActive('LoginPage') }} src='http://cdn.onlinewebfonts.com/svg/img_411076.png'></img>
+                  <img style={{"height": "3vh","width":"auto","marginLeft":"60px"}} onClick={() => { this.setActive('LoginPage') }} src='http://cdn.onlinewebfonts.com/svg/img_411076.png'></img>
                 </div>
           </Nav>
           </Container>

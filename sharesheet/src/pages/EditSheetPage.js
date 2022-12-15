@@ -3,7 +3,7 @@ import { Row, Col, Container, Form, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { SheetSearchBox } from './SheetSearchBox';
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-
+import Swal from 'sweetalert2';
 
 export function EditSheetPage({setActive}) {
 
@@ -71,22 +71,33 @@ export function EditSheetPage({setActive}) {
     }
 
     const handleDelete = async (_id) => {
-        let userAnswer = window.confirm('Confirm delete?');
-        if (!userAnswer) {
-            return
-        }
+        // let userAnswer = window.confirm('Confirm delete?');
+        // if (!userAnswer) {
+        //     return
+        // }
 
-        let result = await axios.post("https://anqi-tgc18-project-2.herokuapp.com/deletesheet",
+        let result = await axios.post("https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io/deletesheet",
             { id: _id })
 
-        if (result.data.acknowledged) {
-            setRefresh(refresh + 1)
-            alert(result.data.deletedCount + " sheet deleted")
-        } else {
-            alert('unsucessful please try again')
-        }
-    }
-
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.data.acknowledged) {
+                 setRefresh(refresh + 1)
+                  Swal.fire(
+                    result.data.deletedCount,
+                     'sheet deleted',
+                    'Your file has been deleted.',
+                    'success'
+                  )}
+                  })
+                }
     return (
         <React.Fragment>
             <Row className='mb-3 md-3'>
@@ -120,4 +131,4 @@ export function EditSheetPage({setActive}) {
 
         </React.Fragment>
     )
-}
+    }

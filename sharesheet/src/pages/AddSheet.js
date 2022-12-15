@@ -4,11 +4,12 @@ import axios from 'axios';
 import Sheet from '../models/Sheet';
 import './AddSheet.css';
 import { validateObjectFilled } from '../component/helper';
+import Swal from 'sweetalert2';
 
     
 export default class AddSheet extends React.Component {
 
-    url = "https://anqiii123-project2expre-x88mcsdunmi.ws-us77.gitpod.io"
+    url = "https://3000-anqiii123-project2expre-qv7br5s334n.ws-us79.gitpod.io"
     
 
     constructor(props){
@@ -86,7 +87,11 @@ export default class AddSheet extends React.Component {
 
             console.log(result);
 
-            alert('sheet added!')
+            Swal.fire(
+                'New Music Score Added!',
+                'よかった！',
+                'success'
+            )
         }
 
 
@@ -213,8 +218,8 @@ export default class AddSheet extends React.Component {
                             <Form.Label>Cover Composer:</Form.Label>
                             {this.state.composerFields}
                             <br />
-                            <Button className="btn-dark mt-3 margin-left" onClick={()=>this.addComposer()}>Add name</Button> 
-                            <Button className="btn-dark mt-3 margin-left" onClick={()=>this.deleteComposer()}>Delete name</Button>
+                            <Button className="btn-dark mt-3 marginLeft" onClick={()=>this.addComposer()}>Add name</Button> 
+                            <Button className="btn-dark mt-3 marginLeft" onClick={()=>this.deleteComposer()}>Delete name</Button>
                             <br />
                             <br />
 
@@ -228,8 +233,7 @@ export default class AddSheet extends React.Component {
 
                             <Button className="btn btn-dark mt-3 btn-lg btn-block" onClick={()=>this.addNewSheet()}>Add this</Button>
                         </Form.Group>
-                        <img className='umaru' src="https://www.seekpng.com/png/detail/164-1641459_transparent-haikyuu-haikyuu-transparent.png"></img>
-                        </div>
+                                 </div>
                     </Col>
 
                 </Row>

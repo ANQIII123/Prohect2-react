@@ -15,12 +15,21 @@ import { FaAngleDown } from "react-icons/fa";
 export default class Homepage extends React.Component {
 
 
-  url = "https://3000-anqiii123-project2expre-qv7br5s334n.ws-us77.gitpod.io"
+  url = "https://3000-anqiii123-project2react-n60f0qeeiv7.ws-us79.gitpod.io"
 
 
   constructor(props){
     super(props)
 
+
+    function Example() {
+      const [show, setShow] = useState(false);
+    
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+    
+      return (
+        
   }
 
 
@@ -32,14 +41,16 @@ export default class Homepage extends React.Component {
            <div className="allSheetContainer">
             <Row>
               <div className="col-lg-4 offset-sm-2 ">
+                
                 {/* <img src="https://i.im.ge/2022/07/26/FhdeoD.png"></img> */}
-                <h1 className='bgText'>Welcome to Anime Share.Sheet</h1>
+                <h1 className='bgText'>Welcome to <br></br> Anime.Music Score</h1>
+                
               </div>
             </Row>
 
             <Row lg={12} >
               <div className='scroll_area'>
-                    <div style={{textAlign: "center",color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}>View all sheets</div>
+                    <div style={{textAlign: "center",color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}>Browse For Scores</div>
                     <span className="box-animate" style={{marginTop:"40px",textAlign: "center",backgroundColor:'rgba(255, 255, 255, 0)',color:'white'}} onClick={()=>{document.getElementById('allsheet').scrollIntoView({behavior: "smooth"})}}><FaAngleDown/></span>
               </div>
             </Row>
@@ -48,14 +59,32 @@ export default class Homepage extends React.Component {
           </div>
         </div>
 
-        <div id="allsheet">
+        <div id="allsheet" style={{position:"relative"}}>
 
+          <div id="tutorial" style={{position:"absolute"}}>
+        
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Launch
+      </Button>
 
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
+}
 
-
+render(<Example />);
+          </div>
           <AllSheet setActive={this.props.setActive}/>
-
-
+           
 
         </div>
   
@@ -75,8 +104,8 @@ export default class Homepage extends React.Component {
               <h2>sharesheet233@gmail.com   /   +65 82375829</h2>
               
               </div>
-                {/* <div className="anya" style={{ position:"absolute", "right":'100px', bottom: '55px'}}>
-                    <Popup trigger={<img style={{"height": "100px","width":"auto"}} src='https://i.im.ge/2022/07/26/FUOHOW.png'></img>} position="top center">
+                {/* <div className="anya" style={{ height:"100%", position:"absolute", "right":'100%', bottom: '5px'}}>
+                    <Popup trigger={<img style={{"height": "100%","width":"auto"}} src='https://iili.io/HoMNvs4.md.png'></img>}>
                       <div>Let Anya know your feedbacks!</div>
                       
                             <textarea name="review" rows="5" cols="18"> </textarea>
